@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" namespace="Domain" assembly="Domain">
+    <class name="Bill" table="[dbo].[Bill]" lazy="false" optimistic-lock="dirty" dynamic-update="true">
+        <id name="RecordId">
+            <generator class="native" />
+        </id>
+
+        <property name="DateOwed" />
+        <property name="Name" />
+        <property name="MonthlyPayment" />
+        <property name="TotalOwed" />
+
+        <!--<set name="SprintEvents" cascade="all-delete-orphan" inverse="true" lazy="false">
+            <key column="SprintRecordId"/>
+            <one-to-many class="SprintEvent"/>
+        </set>-->
+
+    </class>
+</hibernate-mapping>
