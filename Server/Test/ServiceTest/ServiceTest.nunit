@@ -1,9 +1,0 @@
-<NUnitProject>
-  <Settings activeconfig="Debug" />
-  <Config name="Debug" binpathtype="Auto">
-    <assembly path="bin\Debug\Dmi.ServiceTest.dll" />
-  </Config>
-  <Config name="Release" binpathtype="Auto">
-    <assembly path="bin\Release\Dmi.ServiceTest.dll" />
-  </Config>
-</NUnitProject>
