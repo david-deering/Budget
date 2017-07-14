@@ -6,10 +6,10 @@
         </id>
 
         <property name="DateOwed" />
-        <property name="Name" />
         <property name="MonthlyPayment" />
-        <property name="TotalOwed" />
 
+        <!--<many-to-one name="AccountBills" class="Account" column="BillRecordId" />-->
+        
         <!--<set name="SprintEvents" cascade="all-delete-orphan" inverse="true" lazy="false">
             <key column="SprintRecordId"/>
             <one-to-many class="SprintEvent"/>

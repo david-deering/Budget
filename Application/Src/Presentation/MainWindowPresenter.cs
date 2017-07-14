@@ -13,6 +13,7 @@ namespace Presentation
         public MainWindowPresenter()
         {
             BillService = Factory.CreateBillService(string.Empty, string.Empty);
+            AccountService = Factory.CreateAccountService();
         }
 
         #endregion
@@ -20,6 +21,7 @@ namespace Presentation
         #region Properties
 
         private IBillService BillService { get; set; }
+        private IAccountService AccountService { get; set; }
 
         #endregion
 
@@ -28,7 +30,7 @@ namespace Presentation
         private const string Header1 = "Company Name";
         private const string Header2 = "Monthly Payment";
         private const string Header3 = "Date Due";
-        private const string Header4 = "Full Amount";
+        private const string Header4 = "Account Balance";
 
         #endregion
 
@@ -36,13 +38,12 @@ namespace Presentation
 
         public void MakeDatabaseEntries()
         {
-            IBill bill = new Bill();
-            bill.DateOwed = new DateTime(2017, 05, 23);
-            bill.MonthlyPayment = 5.67m;
-            bill.Name = "Haribo";
-            bill.TotalOwed = 10.00m;
-
-            BillService.AddBill(bill);
+            IAccount account = new Account();
+            account.CompanyName = "Haribo";
+            account.AccountBalance = 200.00m;
+            account.InterestRate = 3.9m;
+            account.GeneratePaymentSchedule(DateTime.Now, 20.00m);
+            AccountService.AddAccount(account);
         }
 
         public string[] GetHeaderValues()
@@ -55,28 +56,27 @@ namespace Presentation
             return values.ToArray();
         }
 
-        public BillModel[] GetBills()
+        public AccountModel[] GetAccounts()
         {
-            IBill[] bills = BillService.GetBills();
+            IAccount[] accounts = AccountService.GetAccounts();
 
             // guard clause - empty
-            if (bills.Length == 0)
+            if (accounts.Length == 0)
             {
-                return new BillModel[0];
+                return new AccountModel[0];
             }
 
-            return bills.Select(GetBill).ToArray();
+            return accounts.Select(GetAccount).ToArray();
         }
 
         #endregion
 
-
         #region Helper Methods
 
-        private BillModel GetBill(IBill bill)
+        private AccountModel GetAccount(IAccount account)
         {
-            BillModel model = new BillModel();
-            model.CopyFrom(bill);
+            AccountModel model = new AccountModel();
+            model.CopyFrom(account);
             return model;
         }
 

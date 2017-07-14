@@ -41,20 +41,21 @@ namespace Test.PresentationTests
 
 
         [Test]
-        public void TestBlueSky_GetBills()
+        public void TestBlueSky_GetAccounts()
         {
             //set-up
             Presenter.MakeDatabaseEntries();
-            BillModel[] rows = new BillModel[0];
+
+            AccountModel[] accounts = new AccountModel[0];
 
             //pre-conditions
-            Assert.AreEqual(0, rows.Length);
+            Assert.AreEqual(0, accounts.Length);
 
             //exercise
-            rows = Presenter.GetBills();
+            accounts = Presenter.GetAccounts();
 
             //post-conditions
-            Assert.AreEqual(1, rows.Length);
+            Assert.AreEqual(1, accounts.Length);
         }
 
         #endregion

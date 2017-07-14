@@ -7,7 +7,7 @@ namespace Presentation
 
         #region Constructors
 
-        public AbstractPresenter()
+        protected AbstractPresenter()
         {
         }
 

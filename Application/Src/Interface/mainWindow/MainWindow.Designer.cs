@@ -40,6 +40,7 @@ namespace MainWindow
             this.listView1 = new System.Windows.Forms.ListView();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.lvMain = new System.Windows.Forms.ListView();
+            this.AddAccount = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.IncomePanel.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
@@ -47,6 +48,7 @@ namespace MainWindow
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.AddAccount);
             this.panel1.Controls.Add(this.IncomePanel);
             this.panel1.Controls.Add(this.tableLayoutPanel1);
             this.panel1.Location = new System.Drawing.Point(20, 13);
@@ -162,6 +164,16 @@ namespace MainWindow
             this.lvMain.View = System.Windows.Forms.View.Details;
             this.lvMain.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listView1_MouseDoubleClick);
             // 
+            // AddAccount
+            // 
+            this.AddAccount.Location = new System.Drawing.Point(8, 501);
+            this.AddAccount.Name = "AddAccount";
+            this.AddAccount.Size = new System.Drawing.Size(98, 23);
+            this.AddAccount.TabIndex = 2;
+            this.AddAccount.Text = "Add Account";
+            this.AddAccount.UseVisualStyleBackColor = true;
+            this.AddAccount.Click += new System.EventHandler(this.AddAccount_Click);
+            // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -191,6 +203,7 @@ namespace MainWindow
         private Label label4;
         private Button button2;
         private Button button1;
+        private Button AddAccount;
     }
 }
 

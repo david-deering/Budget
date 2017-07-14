@@ -41,15 +41,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AbstractPresenter.cs" />
+    <Compile Include="AccountPresenter.cs" />
     <Compile Include="EditBillPresenter.cs" />
+    <Compile Include="Facade\AccountSaveFacade.cs" />
     <Compile Include="MainWindowPresenter.cs" />
     <Compile Include="Model\AbstractModel.cs" />
+    <Compile Include="Model\AccountModel.cs" />
+    <Compile Include="Model\AddAccountModel.cs" />
     <Compile Include="Model\BillModel.cs" />
-    <Compile Include="Model\MainWindowModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Facade\" />
     <Folder Include="Validation\" />
   </ItemGroup>
   <ItemGroup>

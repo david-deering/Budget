@@ -19,9 +19,7 @@ namespace Presentation
 
         public DateTime DateOwed { get; set; }
         public decimal MonthlyPayment { get; set; }
-        public string Name { get; set; }
         public int RecordId { get; set; }
-        public decimal TotalOwed { get; set; }
 
         #endregion
 
@@ -31,9 +29,7 @@ namespace Presentation
         {
             DateOwed = bill.DateOwed;
             MonthlyPayment = bill.MonthlyPayment;
-            Name = bill.Name;
             RecordId = bill.RecordId;
-            TotalOwed = bill.TotalOwed;
         }
 
         #endregion

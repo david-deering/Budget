@@ -5,5 +5,6 @@ namespace Domain
     {
 
         IBillService CreateBillService(string databaseId, string sessionid);
+        IAccountService CreateAccountService();
     }
 }

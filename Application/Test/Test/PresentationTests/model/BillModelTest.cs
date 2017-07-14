@@ -26,18 +26,14 @@ namespace Test.PresentationTests.model
             BillModel model = new BillModel();
 
             //pre-conditions
-            Assert.AreNotEqual(bill.Name, model.Name);
             Assert.AreNotEqual(bill.DateOwed, model.DateOwed);
             Assert.AreNotEqual(bill.MonthlyPayment, model.MonthlyPayment);
-            Assert.AreNotEqual(bill.TotalOwed, model.TotalOwed);
 
             //exercise
             model.CopyFrom(bill);
 
-            Assert.AreEqual(bill.Name, model.Name);
             Assert.AreEqual(bill.DateOwed, model.DateOwed);
             Assert.AreEqual(bill.MonthlyPayment, model.MonthlyPayment);
-            Assert.AreEqual(bill.TotalOwed, model.TotalOwed);
 
         }
 

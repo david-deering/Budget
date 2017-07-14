@@ -157,9 +157,7 @@ namespace Dmi.ServiceTest
             Bill bill = new Bill();
             bill.DateOwed = new DateTime(2017, 05, 05);
             bill.MonthlyPayment = 10.15m;
-            bill.Name = "Test Company Name";
             bill.RecordId = 0;
-            bill.TotalOwed = 110.15m;
             return bill; ;
         }
 

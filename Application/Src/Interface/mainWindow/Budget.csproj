@@ -44,6 +44,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccountWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AccountWindow.Designer.cs">
+      <DependentUpon>AccountWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="EditBillWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -58,6 +64,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="AccountWindow.resx">
+      <DependentUpon>AccountWindow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="EditBillWindow.resx">
       <DependentUpon>EditBillWindow.cs</DependentUpon>
     </EmbeddedResource>

@@ -9,5 +9,10 @@ namespace Test.Mock
         {
             return new MockBillService();
         }
+
+        public override IAccountService CreateAccountService()
+        {
+            return new MockAccountService();
+        }
     }
 }

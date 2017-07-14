@@ -28,44 +28,37 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.textBoxDateDueYear = new System.Windows.Forms.TextBox();
+            this.textBoxDateDueDay = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.textBoxTotalOwed = new System.Windows.Forms.TextBox();
             this.textBoxPayment = new System.Windows.Forms.TextBox();
             this.textBoxDateDueMonth = new System.Windows.Forms.TextBox();
-            this.textBoxName = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBoxDateDueDay = new System.Windows.Forms.TextBox();
-            this.textBoxDateDueYear = new System.Windows.Forms.TextBox();
-            this.panel2.SuspendLayout();
+            this.lblAmountDue = new System.Windows.Forms.Label();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // panel2
+            // textBoxDateDueYear
             // 
-            this.panel2.Controls.Add(this.textBoxDateDueYear);
-            this.panel2.Controls.Add(this.textBoxDateDueDay);
-            this.panel2.Controls.Add(this.button2);
-            this.panel2.Controls.Add(this.button1);
-            this.panel2.Controls.Add(this.textBoxTotalOwed);
-            this.panel2.Controls.Add(this.textBoxPayment);
-            this.panel2.Controls.Add(this.textBoxDateDueMonth);
-            this.panel2.Controls.Add(this.textBoxName);
-            this.panel2.Controls.Add(this.label5);
-            this.panel2.Controls.Add(this.label4);
-            this.panel2.Controls.Add(this.label3);
-            this.panel2.Controls.Add(this.label2);
-            this.panel2.Location = new System.Drawing.Point(0, -1);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(285, 264);
-            this.panel2.TabIndex = 0;
+            this.textBoxDateDueYear.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.textBoxDateDueYear.Location = new System.Drawing.Point(199, 54);
+            this.textBoxDateDueYear.Name = "textBoxDateDueYear";
+            this.textBoxDateDueYear.Size = new System.Drawing.Size(43, 20);
+            this.textBoxDateDueYear.TabIndex = 11;
+            // 
+            // textBoxDateDueDay
+            // 
+            this.textBoxDateDueDay.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.textBoxDateDueDay.Location = new System.Drawing.Point(153, 54);
+            this.textBoxDateDueDay.Name = "textBoxDateDueDay";
+            this.textBoxDateDueDay.Size = new System.Drawing.Size(40, 20);
+            this.textBoxDateDueDay.TabIndex = 10;
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(154, 173);
+            this.button2.Location = new System.Drawing.Point(147, 115);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 9;
@@ -74,7 +67,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(54, 173);
+            this.button1.Location = new System.Drawing.Point(66, 115);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 8;
@@ -82,96 +75,74 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.BtnAdd);
             // 
-            // textBoxTotalOwed
-            // 
-            this.textBoxTotalOwed.Location = new System.Drawing.Point(86, 47);
-            this.textBoxTotalOwed.Name = "textBoxTotalOwed";
-            this.textBoxTotalOwed.Size = new System.Drawing.Size(174, 20);
-            this.textBoxTotalOwed.TabIndex = 7;
-            // 
             // textBoxPayment
             // 
-            this.textBoxPayment.Location = new System.Drawing.Point(85, 86);
+            this.textBoxPayment.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.textBoxPayment.Location = new System.Drawing.Point(103, 10);
             this.textBoxPayment.Name = "textBoxPayment";
-            this.textBoxPayment.Size = new System.Drawing.Size(174, 20);
+            this.textBoxPayment.Size = new System.Drawing.Size(44, 20);
             this.textBoxPayment.TabIndex = 6;
             // 
             // textBoxDateDueMonth
             // 
+            this.textBoxDateDueMonth.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.textBoxDateDueMonth.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.textBoxDateDueMonth.Location = new System.Drawing.Point(85, 124);
+            this.textBoxDateDueMonth.Location = new System.Drawing.Point(103, 54);
             this.textBoxDateDueMonth.Name = "textBoxDateDueMonth";
             this.textBoxDateDueMonth.Size = new System.Drawing.Size(44, 20);
             this.textBoxDateDueMonth.TabIndex = 5;
             // 
-            // textBoxName
-            // 
-            this.textBoxName.Location = new System.Drawing.Point(85, 13);
-            this.textBoxName.Name = "textBoxName";
-            this.textBoxName.Size = new System.Drawing.Size(174, 20);
-            this.textBoxName.TabIndex = 4;
-            // 
-            // label5
-            // 
-            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label5.Location = new System.Drawing.Point(12, 86);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(67, 23);
-            this.label5.TabIndex = 3;
-            this.label5.Text = "Payment Due";
-            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // label4
             // 
-            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label4.Location = new System.Drawing.Point(12, 122);
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.label4.Location = new System.Drawing.Point(3, 53);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(67, 23);
             this.label4.TabIndex = 2;
             this.label4.Text = "Date Due";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label3
+            // lblAmountDue
             // 
-            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label3.Location = new System.Drawing.Point(12, 45);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(67, 23);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "Total Owed";
-            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblAmountDue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.lblAmountDue.Location = new System.Drawing.Point(3, 9);
+            this.lblAmountDue.Name = "lblAmountDue";
+            this.lblAmountDue.Size = new System.Drawing.Size(67, 23);
+            this.lblAmountDue.TabIndex = 12;
+            this.lblAmountDue.Text = "Amount Due";
+            this.lblAmountDue.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label2
+            // tableLayoutPanel1
             // 
-            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label2.Location = new System.Drawing.Point(12, 10);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(67, 23);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Name";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // textBoxDateDueDay
-            // 
-            this.textBoxDateDueDay.Location = new System.Drawing.Point(135, 124);
-            this.textBoxDateDueDay.Name = "textBoxDateDueDay";
-            this.textBoxDateDueDay.Size = new System.Drawing.Size(44, 20);
-            this.textBoxDateDueDay.TabIndex = 10;
-            // 
-            // textBoxDateDueYear
-            // 
-            this.textBoxDateDueYear.Location = new System.Drawing.Point(185, 124);
-            this.textBoxDateDueYear.Name = "textBoxDateDueYear";
-            this.textBoxDateDueYear.Size = new System.Drawing.Size(44, 20);
-            this.textBoxDateDueYear.TabIndex = 11;
+            this.tableLayoutPanel1.ColumnCount = 4;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 66.37168F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.62832F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 46F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 48F));
+            this.tableLayoutPanel1.Controls.Add(this.textBoxDateDueMonth, 1, 1);
+            this.tableLayoutPanel1.Controls.Add(this.lblAmountDue, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.label4, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.textBoxPayment, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.textBoxDateDueYear, 3, 1);
+            this.tableLayoutPanel1.Controls.Add(this.textBoxDateDueDay, 2, 1);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 12);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 46.66667F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 53.33333F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(245, 88);
+            this.tableLayoutPanel1.TabIndex = 13;
             // 
             // EditBillWindow
             // 
-            this.ClientSize = new System.Drawing.Size(284, 261);
-            this.Controls.Add(this.panel2);
+            this.ClientSize = new System.Drawing.Size(304, 152);
+            this.Controls.Add(this.tableLayoutPanel1);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
             this.Name = "EditBillWindow";
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
+            this.Text = "Edit Bill";
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -181,19 +152,15 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBoxTotalOwed;
         private System.Windows.Forms.TextBox textBoxPayment;
         private System.Windows.Forms.TextBox textBoxDateDueMonth;
-        private System.Windows.Forms.TextBox textBoxName;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.TextBox textBoxDateDueYear;
         private System.Windows.Forms.TextBox textBoxDateDueDay;
+        private System.Windows.Forms.Label lblAmountDue;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
 
     }
 }

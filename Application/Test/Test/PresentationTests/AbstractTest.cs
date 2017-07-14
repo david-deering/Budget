@@ -27,8 +27,6 @@ namespace Test.PresentationTests
             IBill bill = new Bill();
             bill.DateOwed = new DateTime(2017, 05, 23);
             bill.MonthlyPayment = 5.67m;
-            bill.Name = "Haribo";
-            bill.TotalOwed = 10.00m;
             return bill;
         }
 

@@ -59,6 +59,7 @@
     <Compile Include="databaseConnection\interface\IDatabaseTransaction.cs" />
     <Compile Include="databaseConnection\interface\IDatabaseConnection.cs" />
     <Compile Include="databaseConnection\interface\IDatabaseConnectionFactory.cs" />
+    <Compile Include="service\AccountService.cs" />
     <Compile Include="service\BillService.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -71,6 +72,9 @@
       <Project>{d0d07356-772d-46eb-99e1-e849e620ac1a}</Project>
       <Name>Domain</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="mapping\account.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

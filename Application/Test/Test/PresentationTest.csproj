@@ -56,6 +56,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Mock\MockAccountService.cs" />
     <Compile Include="Mock\MockBillService.cs" />
     <Compile Include="Mock\MockServiceFactory.cs" />
     <Compile Include="PresentationTests\AbstractTest.cs" />

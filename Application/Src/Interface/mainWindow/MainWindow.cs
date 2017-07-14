@@ -52,6 +52,12 @@ namespace MainWindow
             editBillWindow.Show();
         }
 
+        private void AddAccount_Click(object sender, EventArgs e)
+        {
+            AccountWindow accountWindow = new AccountWindow();
+            accountWindow.Show();
+        }
+
         #endregion
 
         #region Helper Methods
@@ -71,21 +77,27 @@ namespace MainWindow
             return headers.ToArray();
         }
 
-        private void CreateRow(BillModel model)
+        private void CreateRow(AccountModel model)
         {
-            string combinedRowContent = string.Format("{0},{1},{2},{3}", model.Name, decimal.Round(model.MonthlyPayment, 2, MidpointRounding.AwayFromZero), model.DateOwed.ToShortDateString(), decimal.Round(model.TotalOwed, 2, MidpointRounding.AwayFromZero));
+            BillModel billModel = model.Bills.FirstOrDefault(bm => bm.DateOwed.Month == DateTime.Now.Month);
+
+            //guard clause - no item
+            if (billModel == null)
+            {
+                return;
+            }
+
+            string combinedRowContent = string.Format("{0},{1},{2},{3}", model.CompanyName, decimal.Round(billModel.MonthlyPayment, 2, MidpointRounding.AwayFromZero), billModel.DateOwed.ToShortDateString(), decimal.Round(model.AccountBalance, 2, MidpointRounding.AwayFromZero));
             string[] splitRowContent = combinedRowContent.Split(new char[] { ',' });
             ListViewItem item = new ListViewItem(splitRowContent);
-            item.Tag = model;
+            item.Tag = billModel;
             lvMain.Items.Add(item);
         }
 
         private void CreateRows()
         {
-            BillModel[] models = Presenter.GetBills();
-            List<BillModel> modelList = models.ToList();
-
-            modelList.ForEach(CreateRow);
+            AccountModel[] accountModels = Presenter.GetAccounts();
+            accountModels.ToList().ForEach(CreateRow);
         }
 
         private void SetHeaders()

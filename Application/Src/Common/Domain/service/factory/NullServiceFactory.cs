@@ -21,6 +21,10 @@ namespace Domain
             return NullBillService.Singleton;
         }
 
+        public virtual IAccountService CreateAccountService()
+        {
+            return NullAccountService.Singleton;
+        }
         #endregion
 
     }

@@ -22,6 +22,14 @@ namespace Service
 
         #region Overriden Methods
 
+        public override IAccountService CreateAccountService()
+        {
+            IDatabaseConnectionFactory databaseConnectionFactory = DatabaseConnectionFactoryRepository.FindOrCreateDatabaseConnectionFactory(string.Empty);
+            IDatabaseConnection databaseConnection = databaseConnectionFactory.FindOrCreateDatabaseConnection(string.Empty);
+
+            return new AccountService(databaseConnection);
+
+        }
 
         public override IBillService CreateBillService(string databaseId, string sessionId)
         {
@@ -30,6 +38,7 @@ namespace Service
 
             return new BillService(databaseConnection);
         }
+
         #endregion
 
     }
