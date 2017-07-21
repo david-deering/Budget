@@ -48,12 +48,6 @@ namespace Service
         {
             // guard clause - not found
             IAccount accountTobuild = Get<IAccount>(recordId);
-
-            if (accountTobuild == null)
-            {
-                return null;
-            }
-
             return accountTobuild;
         }
 
@@ -64,6 +58,30 @@ namespace Service
             return accountsToBuild;
         }
 
+        public void AddBill(IBill bill, IAccount account)
+        {
+            if (bill == null)
+            {
+                return;
+            }
+
+            account.AddBill(bill);
+            Save(bill);
+        }
+
+        public IBill GetBill(int recordId)
+        {
+            IBill bill = Get<IBill>(recordId);
+            return bill;
+        }
+
+        public IBill[] GetBills(int accountRecordId)
+        {
+            IAccount account = Get<IAccount>(accountRecordId);
+            return account.GetBills();
+        }
+
+
         public void UpdateAccount(IAccount account)
         {
             // guard clause - invalid input
@@ -73,6 +91,11 @@ namespace Service
             }
 
             Update(account);
+        }
+
+        public void UpdateBill(IBill bill)
+        {
+            Update(bill);
         }
 
         #endregion

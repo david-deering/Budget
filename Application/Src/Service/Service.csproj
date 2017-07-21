@@ -60,7 +60,6 @@
     <Compile Include="databaseConnection\interface\IDatabaseConnection.cs" />
     <Compile Include="databaseConnection\interface\IDatabaseConnectionFactory.cs" />
     <Compile Include="service\AccountService.cs" />
-    <Compile Include="service\BillService.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="mapping\bill.hbm.xml">

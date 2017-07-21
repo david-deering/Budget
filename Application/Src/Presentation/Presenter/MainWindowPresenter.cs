@@ -36,6 +36,11 @@ namespace Presentation
 
         #region Public Methods
 
+        public void DeleteAccount(AccountModel model)
+        {
+            AccountService.DeleteAccount(model.RecordId);
+        }
+
         public void MakeDatabaseEntries()
         {
             IAccount account = new Account();

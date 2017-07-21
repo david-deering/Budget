@@ -30,77 +30,189 @@ namespace MainWindow
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
+            this.buttonPrevMonth = new System.Windows.Forms.Button();
+            this.buttonNextMonth = new System.Windows.Forms.Button();
+            this.labelMonth = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.listView2 = new System.Windows.Forms.ListView();
+            this.buttonEdit = new System.Windows.Forms.Button();
+            this.btnDeleteAccount = new System.Windows.Forms.Button();
+            this.btnAddAccount = new System.Windows.Forms.Button();
             this.IncomePanel = new System.Windows.Forms.Panel();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.AddPayDate = new System.Windows.Forms.Button();
             this.listView1 = new System.Windows.Forms.ListView();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.lvMain = new System.Windows.Forms.ListView();
-            this.AddAccount = new System.Windows.Forms.Button();
+            this.columnHeaderCompanyName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderMonthlyPayment = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderDateDue = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel1.SuspendLayout();
+            this.tableLayoutPanel2.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.IncomePanel.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.AddAccount);
+            this.panel1.Controls.Add(this.tableLayoutPanel2);
+            this.panel1.Controls.Add(this.panel2);
+            this.panel1.Controls.Add(this.buttonEdit);
+            this.panel1.Controls.Add(this.btnDeleteAccount);
+            this.panel1.Controls.Add(this.btnAddAccount);
             this.panel1.Controls.Add(this.IncomePanel);
             this.panel1.Controls.Add(this.tableLayoutPanel1);
-            this.panel1.Location = new System.Drawing.Point(20, 13);
+            this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1253, 687);
+            this.panel1.Size = new System.Drawing.Size(1253, 570);
             this.panel1.TabIndex = 0;
+            // 
+            // tableLayoutPanel2
+            // 
+            this.tableLayoutPanel2.ColumnCount = 3;
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanel2.Controls.Add(this.buttonPrevMonth, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.buttonNextMonth, 2, 0);
+            this.tableLayoutPanel2.Controls.Add(this.labelMonth, 1, 0);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(384, 3);
+            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
+            this.tableLayoutPanel2.RowCount = 1;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(315, 36);
+            this.tableLayoutPanel2.TabIndex = 9;
+            // 
+            // buttonPrevMonth
+            // 
+            this.buttonPrevMonth.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.buttonPrevMonth.Location = new System.Drawing.Point(37, 6);
+            this.buttonPrevMonth.Name = "buttonPrevMonth";
+            this.buttonPrevMonth.Size = new System.Drawing.Size(23, 23);
+            this.buttonPrevMonth.TabIndex = 6;
+            this.buttonPrevMonth.Text = "<";
+            this.buttonPrevMonth.UseVisualStyleBackColor = true;
+            this.buttonPrevMonth.Click += new System.EventHandler(this.buttonPrevMonth_Click);
+            // 
+            // buttonNextMonth
+            // 
+            this.buttonNextMonth.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.buttonNextMonth.Location = new System.Drawing.Point(255, 6);
+            this.buttonNextMonth.Name = "buttonNextMonth";
+            this.buttonNextMonth.Size = new System.Drawing.Size(23, 23);
+            this.buttonNextMonth.TabIndex = 7;
+            this.buttonNextMonth.Text = ">";
+            this.buttonNextMonth.UseVisualStyleBackColor = true;
+            this.buttonNextMonth.Click += new System.EventHandler(this.buttonNextMonth_Click);
+            // 
+            // labelMonth
+            // 
+            this.labelMonth.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelMonth.AutoSize = true;
+            this.labelMonth.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.labelMonth.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelMonth.Location = new System.Drawing.Point(66, 0);
+            this.labelMonth.MinimumSize = new System.Drawing.Size(105, 26);
+            this.labelMonth.Name = "labelMonth";
+            this.labelMonth.Size = new System.Drawing.Size(183, 36);
+            this.labelMonth.TabIndex = 5;
+            this.labelMonth.Text = "December";
+            this.labelMonth.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.label3);
+            this.panel2.Controls.Add(this.listView2);
+            this.panel2.Location = new System.Drawing.Point(989, 270);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(261, 295);
+            this.panel2.TabIndex = 8;
+            // 
+            // label3
+            // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label3.AutoSize = true;
+            this.label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(62, 9);
+            this.label3.MinimumSize = new System.Drawing.Size(105, 26);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(139, 26);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Weekly Budget";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // listView2
+            // 
+            this.listView2.Location = new System.Drawing.Point(4, 38);
+            this.listView2.Name = "listView2";
+            this.listView2.Size = new System.Drawing.Size(254, 254);
+            this.listView2.TabIndex = 0;
+            this.listView2.UseCompatibleStateImageBehavior = false;
+            // 
+            // buttonEdit
+            // 
+            this.buttonEdit.Location = new System.Drawing.Point(112, 10);
+            this.buttonEdit.Name = "buttonEdit";
+            this.buttonEdit.Size = new System.Drawing.Size(98, 23);
+            this.buttonEdit.TabIndex = 4;
+            this.buttonEdit.Text = "Edit Account";
+            this.buttonEdit.UseVisualStyleBackColor = true;
+            this.buttonEdit.Click += new System.EventHandler(this.buttonEditAccount_Click);
+            // 
+            // btnDeleteAccount
+            // 
+            this.btnDeleteAccount.Location = new System.Drawing.Point(216, 10);
+            this.btnDeleteAccount.Name = "btnDeleteAccount";
+            this.btnDeleteAccount.Size = new System.Drawing.Size(98, 23);
+            this.btnDeleteAccount.TabIndex = 3;
+            this.btnDeleteAccount.Text = "Delete Account";
+            this.btnDeleteAccount.UseVisualStyleBackColor = true;
+            this.btnDeleteAccount.Click += new System.EventHandler(this.btnDeleteAccount_Click);
+            // 
+            // btnAddAccount
+            // 
+            this.btnAddAccount.Location = new System.Drawing.Point(8, 10);
+            this.btnAddAccount.Name = "btnAddAccount";
+            this.btnAddAccount.Size = new System.Drawing.Size(98, 23);
+            this.btnAddAccount.TabIndex = 2;
+            this.btnAddAccount.Text = "Add Account";
+            this.btnAddAccount.UseVisualStyleBackColor = true;
+            this.btnAddAccount.Click += new System.EventHandler(this.btnAddAccount_Click);
             // 
             // IncomePanel
             // 
-            this.IncomePanel.Controls.Add(this.button2);
-            this.IncomePanel.Controls.Add(this.button1);
-            this.IncomePanel.Controls.Add(this.label4);
+            this.IncomePanel.Controls.Add(this.label5);
             this.IncomePanel.Controls.Add(this.label2);
             this.IncomePanel.Controls.Add(this.label1);
             this.IncomePanel.Controls.Add(this.AddPayDate);
             this.IncomePanel.Controls.Add(this.listView1);
-            this.IncomePanel.Location = new System.Drawing.Point(988, 7);
+            this.IncomePanel.Location = new System.Drawing.Point(988, 0);
             this.IncomePanel.Name = "IncomePanel";
-            this.IncomePanel.Size = new System.Drawing.Size(262, 306);
+            this.IncomePanel.Size = new System.Drawing.Size(262, 264);
             this.IncomePanel.TabIndex = 1;
             // 
-            // button2
+            // label5
             // 
-            this.button2.Location = new System.Drawing.Point(201, 10);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(23, 23);
-            this.button2.TabIndex = 7;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(35, 10);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(23, 23);
-            this.button1.TabIndex = 6;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // label4
-            // 
-            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label4.AutoSize = true;
-            this.label4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(78, 7);
-            this.label4.MinimumSize = new System.Drawing.Size(105, 26);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(105, 26);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "December";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label5.AutoSize = true;
+            this.label5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(75, 7);
+            this.label5.MinimumSize = new System.Drawing.Size(105, 26);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(105, 26);
+            this.label5.TabIndex = 6;
+            this.label5.Text = "Income";
+            this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label2
             // 
@@ -134,9 +246,9 @@ namespace MainWindow
             // 
             // listView1
             // 
-            this.listView1.Location = new System.Drawing.Point(4, 36);
+            this.listView1.Location = new System.Drawing.Point(3, 45);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(255, 199);
+            this.listView1.Size = new System.Drawing.Size(255, 193);
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
             // 
@@ -145,44 +257,63 @@ namespace MainWindow
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Controls.Add(this.lvMain, 0, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(4, 4);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(4, 42);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(977, 490);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(977, 523);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // lvMain
             // 
-            this.lvMain.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lvMain.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.lvMain.CheckBoxes = true;
+            this.lvMain.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeaderCompanyName,
+            this.columnHeaderMonthlyPayment,
+            this.columnHeader,
+            this.columnHeaderDateDue});
             this.lvMain.FullRowSelect = true;
             this.lvMain.Location = new System.Drawing.Point(4, 3);
             this.lvMain.Name = "lvMain";
-            this.lvMain.Size = new System.Drawing.Size(968, 481);
+            this.lvMain.Size = new System.Drawing.Size(968, 517);
             this.lvMain.TabIndex = 0;
             this.lvMain.UseCompatibleStateImageBehavior = false;
             this.lvMain.View = System.Windows.Forms.View.Details;
             this.lvMain.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listView1_MouseDoubleClick);
             // 
-            // AddAccount
+            // columnHeaderCompanyName
             // 
-            this.AddAccount.Location = new System.Drawing.Point(8, 501);
-            this.AddAccount.Name = "AddAccount";
-            this.AddAccount.Size = new System.Drawing.Size(98, 23);
-            this.AddAccount.TabIndex = 2;
-            this.AddAccount.Text = "Add Account";
-            this.AddAccount.UseVisualStyleBackColor = true;
-            this.AddAccount.Click += new System.EventHandler(this.AddAccount_Click);
+            this.columnHeaderCompanyName.Text = "CompanyName";
+            this.columnHeaderCompanyName.Width = 99;
+            // 
+            // columnHeaderMonthlyPayment
+            // 
+            this.columnHeaderMonthlyPayment.Text = "MonthlyPayment";
+            this.columnHeaderMonthlyPayment.Width = 98;
+            // 
+            // columnHeader
+            // 
+            this.columnHeader.Width = 98;
+            // 
+            // columnHeaderDateDue
+            // 
+            this.columnHeaderDateDue.Text = "Date Due";
             // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1294, 722);
+            this.ClientSize = new System.Drawing.Size(1294, 588);
             this.Controls.Add(this.panel1);
             this.Name = "MainWindow";
-            this.Text = "Form1";
+            this.Text = "Budget";
             this.panel1.ResumeLayout(false);
+            this.tableLayoutPanel2.ResumeLayout(false);
+            this.tableLayoutPanel2.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.IncomePanel.ResumeLayout(false);
             this.IncomePanel.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -200,10 +331,21 @@ namespace MainWindow
         private Label label1;
         private Button AddPayDate;
         private ListView listView1;
-        private Label label4;
-        private Button button2;
-        private Button button1;
-        private Button AddAccount;
+        private Label labelMonth;
+        private Button buttonNextMonth;
+        private Button buttonPrevMonth;
+        private Button btnAddAccount;
+        private Button btnDeleteAccount;
+        private Button buttonEdit;
+        private Panel panel2;
+        private Label label3;
+        private ListView listView2;
+        private Label label5;
+        private TableLayoutPanel tableLayoutPanel2;
+        private ColumnHeader columnHeaderCompanyName;
+        private ColumnHeader columnHeaderMonthlyPayment;
+        private ColumnHeader columnHeader;
+        private ColumnHeader columnHeaderDateDue;
     }
 }
 

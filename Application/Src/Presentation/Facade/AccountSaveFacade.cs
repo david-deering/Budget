@@ -34,13 +34,39 @@ namespace Presentation
             account.RecordId = 0;
 
             account.GeneratePaymentSchedule(model.FirstDueDate, model.AmountDue);
-
             return account;
+        }
+
+        public void Apply(AccountModel model, IAccount account)
+        {
+            account.AccountBalance = model.AccountBalance;
+            account.CompanyName = model.CompanyName;
+            account.InterestRate = model.InterestRate;
+        }
+
+        public bool Validate(AddAccountModel model)
+        {
+            return IsDuplicateName(model.CompanyName);
         }
 
         public bool Validate(AccountModel model)
         {
-            IAccount account = Service.GetAccounts().FirstOrDefault(a => a.CompanyName == model.CompanyName);
+
+            return IsDuplicateName(model.CompanyName, model.RecordId);
+        }
+
+        #endregion
+
+        #region Helper Methods
+
+        private bool IsDuplicateName(string name)
+        {
+            return IsDuplicateName(name, 0);
+        }
+
+        private bool IsDuplicateName(string name, int recordId)
+        {
+            IAccount account = Service.GetAccounts().FirstOrDefault(a => a.CompanyName == name);
 
             //guard clause - no result
             if (account == null)
@@ -48,14 +74,14 @@ namespace Presentation
                 return true;
             }
 
+            //guard clause - Editing existing account
+            if (account.RecordId == recordId)
+            {
+                return true;
+            }
+
             return false;
         }
-
-        #endregion
-
-        #region Helper Methods
-
-
 
         #endregion
 

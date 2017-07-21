@@ -22,7 +22,7 @@ namespace Dmi.ServiceTest.service
         #region Blue Sky Tests
 
         [Test]
-        public void TestBlueSky_Add()
+        public void TestBlueSky_AddAccount()
         {
             // set-up
             IAccount account = CreateAccount();
@@ -39,7 +39,7 @@ namespace Dmi.ServiceTest.service
         }
 
         [Test]
-        public void TestBlueSky_Delete()
+        public void TestBlueSky_DeleteAccount()
         {
             // set-up
             IAccount account = CreateAccount();
@@ -57,7 +57,7 @@ namespace Dmi.ServiceTest.service
         }
 
         [Test]
-        public void TestBlueSky_Get()
+        public void TestBlueSky_GetAccount()
         {
             // set-up
             IAccount account = CreateAccount();
@@ -71,8 +71,40 @@ namespace Dmi.ServiceTest.service
             Assert.AreEqual(persistedAccount, account);
         }
 
+
         [Test]
-        public void TestBlueSky_Update()
+        public void TestBlueSky_GetBills()
+        {
+            // set-up
+            IAccount account = CreateAccount();
+            AccountService.AddAccount(account);
+
+            // exercise
+            IBill[] bills = AccountService.GetBills(account.RecordId);
+
+            // post-conditions
+            Assert.AreEqual(2, bills.Length);
+        }
+
+
+        [Test]
+        public void TestBlueSky_GetBill()
+        {
+            // set-up
+            IAccount account = CreateAccount();
+            AccountService.AddAccount(account);
+            IBill someBill = AccountService.GetBills(account.RecordId)[0];
+            int billRecordId = someBill.RecordId;
+
+            // exercise
+            IBill bill = AccountService.GetBill(billRecordId);
+
+            // post-conditions
+            Assert.AreEqual(bill, someBill);
+        }
+
+        [Test]
+        public void TestBlueSky_UpdateAccount()
         {
             // set-up
             IAccount account = CreateAccount();

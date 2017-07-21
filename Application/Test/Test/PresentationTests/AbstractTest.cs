@@ -14,6 +14,17 @@ namespace Test.PresentationTests
 
         #endregion
 
+        #region Constants
+
+        public const decimal AccountBalance = 100.99m;
+        public const string CompanyName = "Test";
+        public const decimal AmountDue = 2m;
+        public const decimal InterestRate = 2m;
+        public const int RecordIdIs0 = 0;
+
+
+        #endregion
+
         #region Properties
 
 

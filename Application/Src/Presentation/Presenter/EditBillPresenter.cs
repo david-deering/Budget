@@ -10,14 +10,14 @@ namespace Presentation
 
         public EditBillPresenter()
         {
-            Service = Factory.CreateBillService(string.Empty, string.Empty);
+            Service = Factory.CreateAccountService();
         }
 
         #endregion
 
         #region Properties
 
-        private IBillService Service { get; set; }
+        private IAccountService Service { get; set; }
 
         #endregion
 
@@ -34,8 +34,6 @@ namespace Presentation
         #endregion
 
         #region Helper Methods
-
-
 
         #endregion
 

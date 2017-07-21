@@ -10,9 +10,7 @@ namespace mainWindow
         public EditBillWindow(BillModel model)
         {
             InitializeComponent();
-            textBoxDateDueMonth.Text = model.DateOwed.Month.ToString();
-            textBoxDateDueDay.Text = model.DateOwed.Day.ToString();
-            textBoxDateDueYear.Text = model.DateOwed.Year.ToString();
+            textBoxDateDue.Text = model.DateOwed.ToShortDateString();
             textBoxPayment.Text = decimal.Round(model.MonthlyPayment, 2, MidpointRounding.AwayFromZero).ToString(CultureInfo.InvariantCulture);
             Model = model;
             Presenter = new EditBillPresenter();
@@ -24,11 +22,17 @@ namespace mainWindow
         private EditBillPresenter Presenter { get; set; }
 
         #endregion
+
         private void BtnAdd(object sender, System.EventArgs e)
         {
-            Model.DateOwed = new DateTime(int.Parse(textBoxDateDueYear.Text), int.Parse(textBoxDateDueMonth.Text), int.Parse(textBoxDateDueDay.Text));
+            Model.DateOwed = DateTime.Parse(textBoxDateDue.Text);
             Model.MonthlyPayment = decimal.Parse(textBoxPayment.Text);
             Presenter.EditBill(Model);
+            Close();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
             Close();
         }
 

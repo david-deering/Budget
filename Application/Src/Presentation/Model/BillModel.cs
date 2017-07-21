@@ -19,6 +19,7 @@ namespace Presentation
 
         public DateTime DateOwed { get; set; }
         public decimal MonthlyPayment { get; set; }
+        public int ParentId { get; set; }
         public int RecordId { get; set; }
 
         #endregion

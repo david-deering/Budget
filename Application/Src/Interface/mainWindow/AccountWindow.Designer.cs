@@ -28,56 +28,29 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBoxName = new System.Windows.Forms.TextBox();
             this.labelAccountBalance = new System.Windows.Forms.Label();
             this.labelInterestRate = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.labelCompanyName = new System.Windows.Forms.Label();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.tableLayoutPanel1.SuspendLayout();
+            this.labelName = new System.Windows.Forms.Label();
+            this.tableLayoutPanelAccount = new System.Windows.Forms.TableLayoutPanel();
+            this.textBoxName = new System.Windows.Forms.TextBox();
+            this.textBoxInterestRate = new System.Windows.Forms.TextBox();
+            this.textBoxBalance = new System.Windows.Forms.TextBox();
+            this.buttonSave = new System.Windows.Forms.Button();
+            this.buttonCancel = new System.Windows.Forms.Button();
+            this.buttonDelete = new System.Windows.Forms.Button();
+            this.labelFirstPaymentDate = new System.Windows.Forms.Label();
+            this.labelAmount = new System.Windows.Forms.Label();
+            this.textBoxFirstDueDate = new System.Windows.Forms.TextBox();
+            this.textBoxAmountDue = new System.Windows.Forms.TextBox();
+            this.tableLayoutPanelAddAccount = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanelAccount.SuspendLayout();
+            this.tableLayoutPanelAddAccount.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // textBox3
-            // 
-            this.textBox3.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.textBox3.Location = new System.Drawing.Point(100, 125);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(174, 20);
-            this.textBox3.TabIndex = 8;
-            // 
-            // textBox2
-            // 
-            this.textBox2.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.textBox2.Location = new System.Drawing.Point(100, 71);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(174, 20);
-            this.textBox2.TabIndex = 7;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.textBox1.Location = new System.Drawing.Point(100, 17);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(174, 20);
-            this.textBox1.TabIndex = 6;
-            // 
-            // textBoxName
-            // 
-            this.textBoxName.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.textBoxName.Location = new System.Drawing.Point(100, 179);
-            this.textBoxName.Name = "textBoxName";
-            this.textBoxName.Size = new System.Drawing.Size(174, 20);
-            this.textBoxName.TabIndex = 5;
             // 
             // labelAccountBalance
             // 
             this.labelAccountBalance.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.labelAccountBalance.Location = new System.Drawing.Point(3, 123);
+            this.labelAccountBalance.Location = new System.Drawing.Point(3, 152);
             this.labelAccountBalance.Name = "labelAccountBalance";
             this.labelAccountBalance.Size = new System.Drawing.Size(91, 23);
             this.labelAccountBalance.TabIndex = 4;
@@ -87,86 +60,166 @@
             // labelInterestRate
             // 
             this.labelInterestRate.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.labelInterestRate.Location = new System.Drawing.Point(3, 69);
+            this.labelInterestRate.Location = new System.Drawing.Point(3, 86);
             this.labelInterestRate.Name = "labelInterestRate";
             this.labelInterestRate.Size = new System.Drawing.Size(89, 23);
             this.labelInterestRate.TabIndex = 3;
             this.labelInterestRate.Text = "Interest Rate";
             this.labelInterestRate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // label2
+            // labelName
             // 
-            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label2.Location = new System.Drawing.Point(3, 15);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(91, 23);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Name";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.labelName.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.labelName.Location = new System.Drawing.Point(4, 21);
+            this.labelName.Name = "labelName";
+            this.labelName.Size = new System.Drawing.Size(91, 23);
+            this.labelName.TabIndex = 2;
+            this.labelName.Text = "Name";
+            this.labelName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // labelCompanyName
+            // tableLayoutPanelAccount
             // 
-            this.labelCompanyName.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.labelCompanyName.Location = new System.Drawing.Point(5, 178);
-            this.labelCompanyName.Name = "labelCompanyName";
-            this.labelCompanyName.Size = new System.Drawing.Size(89, 23);
-            this.labelCompanyName.TabIndex = 1;
-            this.labelCompanyName.Text = "Name";
-            this.labelCompanyName.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.tableLayoutPanelAccount.ColumnCount = 2;
+            this.tableLayoutPanelAccount.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.4471F));
+            this.tableLayoutPanelAccount.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 66.5529F));
+            this.tableLayoutPanelAccount.Controls.Add(this.labelName, 0, 0);
+            this.tableLayoutPanelAccount.Controls.Add(this.textBoxName, 1, 0);
+            this.tableLayoutPanelAccount.Controls.Add(this.labelInterestRate, 0, 1);
+            this.tableLayoutPanelAccount.Controls.Add(this.textBoxInterestRate, 1, 1);
+            this.tableLayoutPanelAccount.Controls.Add(this.textBoxBalance, 1, 2);
+            this.tableLayoutPanelAccount.Controls.Add(this.labelAccountBalance, 0, 2);
+            this.tableLayoutPanelAccount.Location = new System.Drawing.Point(2, 13);
+            this.tableLayoutPanelAccount.Name = "tableLayoutPanelAccount";
+            this.tableLayoutPanelAccount.RowCount = 3;
+            this.tableLayoutPanelAccount.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanelAccount.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanelAccount.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
+            this.tableLayoutPanelAccount.Size = new System.Drawing.Size(293, 197);
+            this.tableLayoutPanelAccount.TabIndex = 1;
             // 
-            // tableLayoutPanel1
+            // textBoxName
             // 
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.4471F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 66.5529F));
-            this.tableLayoutPanel1.Controls.Add(this.label2, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.textBox1, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.labelInterestRate, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.textBox2, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.textBox3, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.labelCompanyName, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.textBoxName, 1, 3);
-            this.tableLayoutPanel1.Controls.Add(this.labelAccountBalance, 0, 2);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(2, 13);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 4;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(293, 217);
-            this.tableLayoutPanel1.TabIndex = 9;
+            this.textBoxName.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.textBoxName.Location = new System.Drawing.Point(101, 22);
+            this.textBoxName.Name = "textBoxName";
+            this.textBoxName.Size = new System.Drawing.Size(174, 20);
+            this.textBoxName.TabIndex = 1;
             // 
-            // button1
+            // textBoxInterestRate
             // 
-            this.button1.Location = new System.Drawing.Point(61, 247);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.textBoxInterestRate.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.textBoxInterestRate.Location = new System.Drawing.Point(101, 87);
+            this.textBoxInterestRate.Name = "textBoxInterestRate";
+            this.textBoxInterestRate.Size = new System.Drawing.Size(174, 20);
+            this.textBoxInterestRate.TabIndex = 2;
             // 
-            // button2
+            // textBoxBalance
             // 
-            this.button2.Location = new System.Drawing.Point(162, 246);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 11;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
+            this.textBoxBalance.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.textBoxBalance.Location = new System.Drawing.Point(101, 153);
+            this.textBoxBalance.Name = "textBoxBalance";
+            this.textBoxBalance.Size = new System.Drawing.Size(174, 20);
+            this.textBoxBalance.TabIndex = 3;
+            // 
+            // buttonSave
+            // 
+            this.buttonSave.Location = new System.Drawing.Point(19, 329);
+            this.buttonSave.Name = "buttonSave";
+            this.buttonSave.Size = new System.Drawing.Size(75, 23);
+            this.buttonSave.TabIndex = 6;
+            this.buttonSave.Text = "Save";
+            this.buttonSave.UseVisualStyleBackColor = true;
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
+            // 
+            // buttonCancel
+            // 
+            this.buttonCancel.Location = new System.Drawing.Point(216, 329);
+            this.buttonCancel.Name = "buttonCancel";
+            this.buttonCancel.Size = new System.Drawing.Size(75, 23);
+            this.buttonCancel.TabIndex = 8;
+            this.buttonCancel.Text = "Cancel";
+            this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
+            // 
+            // buttonDelete
+            // 
+            this.buttonDelete.Location = new System.Drawing.Point(115, 329);
+            this.buttonDelete.Name = "buttonDelete";
+            this.buttonDelete.Size = new System.Drawing.Size(75, 23);
+            this.buttonDelete.TabIndex = 7;
+            this.buttonDelete.Text = "Delete";
+            this.buttonDelete.UseVisualStyleBackColor = true;
+            // 
+            // labelFirstPaymentDate
+            // 
+            this.labelFirstPaymentDate.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelFirstPaymentDate.Location = new System.Drawing.Point(3, 13);
+            this.labelFirstPaymentDate.Name = "labelFirstPaymentDate";
+            this.labelFirstPaymentDate.Size = new System.Drawing.Size(91, 23);
+            this.labelFirstPaymentDate.TabIndex = 9;
+            this.labelFirstPaymentDate.Text = "First Due Date";
+            this.labelFirstPaymentDate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // labelAmount
+            // 
+            this.labelAmount.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelAmount.Location = new System.Drawing.Point(3, 63);
+            this.labelAmount.Name = "labelAmount";
+            this.labelAmount.Size = new System.Drawing.Size(91, 23);
+            this.labelAmount.TabIndex = 10;
+            this.labelAmount.Text = "Amount Due";
+            this.labelAmount.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // textBoxFirstDueDate
+            // 
+            this.textBoxFirstDueDate.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.textBoxFirstDueDate.Location = new System.Drawing.Point(101, 15);
+            this.textBoxFirstDueDate.Name = "textBoxFirstDueDate";
+            this.textBoxFirstDueDate.Size = new System.Drawing.Size(174, 20);
+            this.textBoxFirstDueDate.TabIndex = 4;
+            // 
+            // textBoxAmountDue
+            // 
+            this.textBoxAmountDue.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.textBoxAmountDue.Location = new System.Drawing.Point(101, 65);
+            this.textBoxAmountDue.Name = "textBoxAmountDue";
+            this.textBoxAmountDue.Size = new System.Drawing.Size(174, 20);
+            this.textBoxAmountDue.TabIndex = 5;
+            // 
+            // tableLayoutPanelAddAccount
+            // 
+            this.tableLayoutPanelAddAccount.ColumnCount = 2;
+            this.tableLayoutPanelAddAccount.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.78839F));
+            this.tableLayoutPanelAddAccount.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 66.2116F));
+            this.tableLayoutPanelAddAccount.Controls.Add(this.labelFirstPaymentDate, 0, 0);
+            this.tableLayoutPanelAddAccount.Controls.Add(this.labelAmount, 0, 1);
+            this.tableLayoutPanelAddAccount.Controls.Add(this.textBoxFirstDueDate, 1, 0);
+            this.tableLayoutPanelAddAccount.Controls.Add(this.textBoxAmountDue, 1, 1);
+            this.tableLayoutPanelAddAccount.Location = new System.Drawing.Point(2, 217);
+            this.tableLayoutPanelAddAccount.Name = "tableLayoutPanelAddAccount";
+            this.tableLayoutPanelAddAccount.RowCount = 2;
+            this.tableLayoutPanelAddAccount.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanelAddAccount.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanelAddAccount.Size = new System.Drawing.Size(293, 100);
+            this.tableLayoutPanelAddAccount.TabIndex = 2;
+            this.tableLayoutPanelAddAccount.Visible = false;
             // 
             // AccountWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(303, 283);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.tableLayoutPanel1);
+            this.ClientSize = new System.Drawing.Size(306, 368);
+            this.Controls.Add(this.tableLayoutPanelAddAccount);
+            this.Controls.Add(this.buttonDelete);
+            this.Controls.Add(this.buttonCancel);
+            this.Controls.Add(this.buttonSave);
+            this.Controls.Add(this.tableLayoutPanelAccount);
             this.Name = "AccountWindow";
-            this.Text = "Add Account";
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
+            this.Text = "Account";
+            this.tableLayoutPanelAccount.ResumeLayout(false);
+            this.tableLayoutPanelAccount.PerformLayout();
+            this.tableLayoutPanelAddAccount.ResumeLayout(false);
+            this.tableLayoutPanelAddAccount.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -175,14 +228,18 @@
 
         private System.Windows.Forms.Label labelAccountBalance;
         private System.Windows.Forms.Label labelInterestRate;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label labelCompanyName;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label labelName;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanelAccount;
+        private System.Windows.Forms.Button buttonSave;
+        private System.Windows.Forms.Button buttonCancel;
         private System.Windows.Forms.TextBox textBoxName;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TextBox textBoxInterestRate;
+        private System.Windows.Forms.TextBox textBoxBalance;
+        private System.Windows.Forms.Button buttonDelete;
+        private System.Windows.Forms.Label labelFirstPaymentDate;
+        private System.Windows.Forms.Label labelAmount;
+        private System.Windows.Forms.TextBox textBoxAmountDue;
+        private System.Windows.Forms.TextBox textBoxFirstDueDate;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanelAddAccount;
     }
 }

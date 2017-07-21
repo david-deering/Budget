@@ -57,11 +57,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Mock\MockAccountService.cs" />
-    <Compile Include="Mock\MockBillService.cs" />
     <Compile Include="Mock\MockServiceFactory.cs" />
     <Compile Include="PresentationTests\AbstractTest.cs" />
-    <Compile Include="PresentationTests\MainWindowPresenterTest.cs" />
-    <Compile Include="PresentationTests\model\BillModelTest.cs" />
+    <Compile Include="PresentationTests\Presenter\EditBillPresenterTest.cs" />
+    <Compile Include="PresentationTests\Presenter\MainWindowPresenterTest.cs" />
+    <Compile Include="PresentationTests\Model\AccountModelTest.cs" />
+    <Compile Include="PresentationTests\Model\AddAccountModelTest.cs" />
+    <Compile Include="PresentationTests\Model\BillModelTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

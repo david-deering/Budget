@@ -31,14 +31,6 @@ namespace Service
 
         }
 
-        public override IBillService CreateBillService(string databaseId, string sessionId)
-        {
-            IDatabaseConnectionFactory databaseConnectionFactory = DatabaseConnectionFactoryRepository.FindOrCreateDatabaseConnectionFactory(databaseId);
-            IDatabaseConnection databaseConnection = databaseConnectionFactory.FindOrCreateDatabaseConnection(sessionId);
-
-            return new BillService(databaseConnection);
-        }
-
         #endregion
 
     }

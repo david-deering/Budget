@@ -40,20 +40,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AbstractPresenter.cs" />
-    <Compile Include="AccountPresenter.cs" />
-    <Compile Include="EditBillPresenter.cs" />
+    <Compile Include="Presenter\AbstractPresenter.cs" />
+    <Compile Include="Presenter\AccountPresenter.cs" />
+    <Compile Include="Presenter\EditBillPresenter.cs" />
     <Compile Include="Facade\AccountSaveFacade.cs" />
-    <Compile Include="MainWindowPresenter.cs" />
+    <Compile Include="Presenter\MainWindowPresenter.cs" />
     <Compile Include="Model\AbstractModel.cs" />
     <Compile Include="Model\AccountModel.cs" />
     <Compile Include="Model\AddAccountModel.cs" />
     <Compile Include="Model\BillModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Validation\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Common\Domain\Domain.csproj">
       <Project>{d0d07356-772d-46eb-99e1-e849e620ac1a}</Project>

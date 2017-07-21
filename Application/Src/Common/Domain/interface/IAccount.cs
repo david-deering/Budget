@@ -11,6 +11,7 @@ namespace Domain
         decimal InterestRate { get; set; }
         int RecordId { get; set; }
 
+        void AddBill(IBill bill);
         void GeneratePaymentSchedule(DateTime firstDueDate, decimal monthlyPayment);
         IBill[] GetBills();
     }

@@ -6,7 +6,7 @@ using Test.Mock;
 namespace Test.PresentationTests
 {
     [TestFixture]
-    public class MainWindowPresenterTest
+    public class MainWindowPresenterTest : AbstractTest
     {
 
         private MainWindowPresenter Presenter;
@@ -36,7 +36,7 @@ namespace Test.PresentationTests
             Assert.AreEqual("Company Name", headers[0]);
             Assert.AreEqual("Monthly Payment", headers[1]);
             Assert.AreEqual("Date Due", headers[2]);
-            Assert.AreEqual("Full Amount", headers[3]);
+            Assert.AreEqual("Account Balance", headers[3]);
         }
 
 

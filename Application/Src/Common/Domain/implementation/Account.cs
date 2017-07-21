@@ -31,6 +31,11 @@ namespace Domain
 
         #region Public Methods
 
+        public void AddBill(IBill bill)
+        {
+            Bills.Add(bill);
+        }
+
         public void GeneratePaymentSchedule(DateTime firstDueDate, decimal monthlyPayment)
         {
             ConfigureBills(firstDueDate, monthlyPayment);
@@ -54,9 +59,9 @@ namespace Domain
 
         }
 
-        private Bill ConfigureBill(DateTime dueDate, decimal monthlyPayment)
+        private IBill ConfigureBill(DateTime dueDate, decimal monthlyPayment)
         {
-            Bill bill = new Bill();
+            IBill bill = new Bill();
             bill.DateOwed = dueDate;
             bill.MonthlyPayment = monthlyPayment;
             return bill;
