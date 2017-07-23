@@ -34,17 +34,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>D:\Work\tcp-we-thirdparty\Asp.Net-WebApi\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Iesi.Collections">
+      <HintPath>..\..\..\..\..\ThirdParty\NHibernate-4.1.1.GA-bin\Required_Bins\Iesi.Collections.dll</HintPath>
     </Reference>
     <Reference Include="NHibernate">
-      <HintPath>..\..\..\..\Dude\SharedLibs\NHibernate.dll</HintPath>
+      <HintPath>..\..\..\..\..\ThirdParty\NHibernate.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
-      <HintPath>D:\Work\tcp-we-thirdparty\NUnit\2.6.4\bin\framework\nunit.framework.dll</HintPath>
+      <HintPath>..\..\..\..\..\ThirdParty\nunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="nunit.mocks">
-      <HintPath>D:\Work\tcp-we-thirdparty\NUnit\2.6.4\bin\framework\nunit.mocks.dll</HintPath>
+      <HintPath>..\..\..\..\..\ThirdParty\nunit.mocks.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

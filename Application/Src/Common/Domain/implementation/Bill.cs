@@ -17,6 +17,7 @@ namespace Domain
 
         public virtual DateTime DateOwed { get; set; }
         public virtual decimal MonthlyPayment { get; set; }
+        public bool Paid { get; set; }
         public virtual int RecordId { get; set; }
 
         #endregion

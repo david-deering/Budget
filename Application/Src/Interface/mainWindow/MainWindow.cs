@@ -18,7 +18,8 @@ namespace MainWindow
             Presenter = new MainWindowPresenter();
             DisplayedDate = DateTime.Now;
             labelMonth.Text = string.Format("{0:MMMM}, {1:yyyy}", DisplayedDate, DisplayedDate);
-            SetHeaders();
+            //Presenter.MakeDatabaseEntries();
+            //SetHeaders();
             CreateRows();
         }
 
@@ -32,6 +33,9 @@ namespace MainWindow
 
         #endregion
 
+        private string paid = "paid";
+        private string notPaid = "not paid";
+
         #region Event Handlers
 
         private void btnAddAccount_Click(object sender, EventArgs e)
@@ -41,7 +45,6 @@ namespace MainWindow
             window.Location = new Point(500, 500);
             window.Show();
         }
-
 
         private void btnDeleteAccount_Click(object sender, EventArgs e)
         {
@@ -115,7 +118,7 @@ namespace MainWindow
         private ColumnHeader[] CreateHeaders()
         {
             string[] headerValues = Presenter.GetHeaderValues();
-            List<ColumnHeader> headers = headerValues.Select(columnHeader => CreateHeader(columnHeader, 200)).ToList();
+            List<ColumnHeader> headers = headerValues.Select(columnHeader => CreateHeader(columnHeader, 175)).ToList();
             return headers.ToArray();
         }
 
@@ -129,8 +132,18 @@ namespace MainWindow
                 return;
             }
 
+            string paidStatus;
+            if (billModel.Paid)
+            {
+                paidStatus = paid;
+            }
+            else
+            {
+                paidStatus = notPaid;
+            }
+
             billModel.ParentId = model.RecordId;
-            string combinedRowContent = string.Format("{0},{1},{2},{3}", model.CompanyName, decimal.Round(billModel.MonthlyPayment, 2, MidpointRounding.AwayFromZero), billModel.DateOwed.ToShortDateString(), decimal.Round(model.AccountBalance, 2, MidpointRounding.AwayFromZero));
+            string combinedRowContent = string.Format("{0},{1},{2},{3},{4}", model.CompanyName, decimal.Round(billModel.MonthlyPayment, 2, MidpointRounding.AwayFromZero), billModel.DateOwed.ToShortDateString(), decimal.Round(model.AccountBalance, 2, MidpointRounding.AwayFromZero), paidStatus);
             string[] splitRowContent = combinedRowContent.Split(new char[] { ',' });
             ListViewItem item = new ListViewItem(splitRowContent);
             item.Tag = billModel;

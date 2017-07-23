@@ -28,6 +28,7 @@ namespace Presentation
             IBill bill = Service.GetBill(model.RecordId);
             bill.DateOwed = model.DateOwed;
             bill.MonthlyPayment = model.MonthlyPayment;
+            bill.Paid = model.Paid;
             Service.UpdateBill(bill);
         }
 

@@ -53,7 +53,6 @@ namespace Domain
         private void ConfigureBills(DateTime firstDueDate, decimal monthlyPayment)
         {
             Bills.Add(ConfigureBill(firstDueDate, monthlyPayment));
-
             DateTime date = GetNextMonthDueDate(firstDueDate);
             Bills.Add(ConfigureBill(date, monthlyPayment));
 
@@ -64,6 +63,7 @@ namespace Domain
             IBill bill = new Bill();
             bill.DateOwed = dueDate;
             bill.MonthlyPayment = monthlyPayment;
+            bill.Paid = false;
             return bill;
         }
 

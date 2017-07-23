@@ -27,6 +27,7 @@ namespace mainWindow
         {
             Model.DateOwed = DateTime.Parse(textBoxDateDue.Text);
             Model.MonthlyPayment = decimal.Parse(textBoxPayment.Text);
+            Model.Paid = checkBoxPaid.Checked;
             Presenter.EditBill(Model);
             Close();
         }
