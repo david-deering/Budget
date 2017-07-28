@@ -26,11 +26,6 @@ namespace Presentation
 
         #region Public Methods
 
-        public AccountModel[] GetAccounts()
-        {
-            IAccount[] accounts = Service.GetAccounts();
-            return accounts.Select(GetAccount).ToArray();
-        }
 
         public void EditAccount(AccountModel model)
         {
@@ -44,6 +39,12 @@ namespace Presentation
             IAccount account = Service.GetAccount(model.RecordId);
             SaveFacade.Apply(model, account);
             Service.UpdateAccount(account);
+        }
+
+        public AccountModel[] GetAccounts()
+        {
+            IAccount[] accounts = Service.GetAccounts();
+            return accounts.Select(GetAccount).ToArray();
         }
 
         public void SaveAccount(AddAccountModel model)

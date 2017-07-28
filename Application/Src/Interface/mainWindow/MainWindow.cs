@@ -162,7 +162,7 @@ namespace MainWindow
             string paidStatus = billModel.Paid ? Paid : NotPaid;
 
             billModel.ParentId = model.RecordId;
-            string combinedRowContent = string.Format("{0},{1},{2},{3},{4}, {5}", model.CompanyName, decimal.Round(billModel.MonthlyPayment, 2, MidpointRounding.AwayFromZero), billModel.DateOwed.ToShortDateString(), decimal.Round(model.AccountBalance, 2, MidpointRounding.AwayFromZero), paidStatus, billModel.ConfirmationNumber);
+            string combinedRowContent = string.Format("{0},{1},{2},{3},{4}, {5}", model.CompanyName, decimal.Round(model.AccountBalance, 2, MidpointRounding.AwayFromZero), decimal.Round(billModel.MonthlyPayment, 2, MidpointRounding.AwayFromZero), billModel.DateOwed.ToShortDateString(), paidStatus, billModel.ConfirmationNumber);
             string[] splitRowContent = combinedRowContent.Split(',');
             ListViewItem item = new ListViewItem(splitRowContent);
             item.Tag = billModel;

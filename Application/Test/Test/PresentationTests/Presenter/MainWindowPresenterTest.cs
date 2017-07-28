@@ -1,7 +1,6 @@
-﻿using Domain;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using Presentation;
-using Test.Mock;
+using System;
 
 namespace Test.PresentationTests
 {
@@ -14,11 +13,27 @@ namespace Test.PresentationTests
         [SetUp]
         public void SetUp()
         {
-            ServiceFactoryProxy.Singleton.SetServiceFactory(new MockServiceFactory());
             Presenter = new MainWindowPresenter();
         }
 
         #region Blue Sky Tests
+
+        [Test]
+        public void TestBlueSky_GetPayDaysInMonth()
+        {
+            //set-up
+            CreatePayDayData();
+            PayDayModel[] models = new PayDayModel[0];
+
+            //pre-conditions
+            Assert.AreEqual(0, models.Length);
+
+            //exercise
+            models = Presenter.GetPayDaysInMonth(new DateTime(2017, 05, 05));
+
+            //post-conditions
+            Assert.AreEqual(1, models.Length);
+        }
 
         [Test]
         public void TestBlueSky_CreateHeaders()
@@ -44,8 +59,7 @@ namespace Test.PresentationTests
         public void TestBlueSky_GetAccounts()
         {
             //set-up
-            Presenter.MakeDatabaseEntries();
-
+            CreateAccountData();
             AccountModel[] accounts = new AccountModel[0];
 
             //pre-conditions
@@ -57,6 +71,7 @@ namespace Test.PresentationTests
             //post-conditions
             Assert.AreEqual(1, accounts.Length);
         }
+
 
         #endregion
 
@@ -77,9 +92,6 @@ namespace Test.PresentationTests
 
         #region Helper Methods
 
-
-
-        #endregion
-
     }
+    #endregion
 }

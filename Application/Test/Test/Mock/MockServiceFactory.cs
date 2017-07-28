@@ -7,8 +7,12 @@ namespace Test.Mock
 
         public override IAccountService CreateAccountService()
         {
-            return new MockAccountService();
+            return MockAccountService.Singleton;
         }
 
+        public override IPayDayService CreatePayDayService()
+        {
+            return MockPayDayService.Singleton;
+        }
     }
 }

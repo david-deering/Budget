@@ -57,8 +57,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Mock\MockAccountService.cs" />
+    <Compile Include="Mock\MockPayDayService.cs" />
     <Compile Include="Mock\MockServiceFactory.cs" />
     <Compile Include="PresentationTests\AbstractTest.cs" />
+    <Compile Include="PresentationTests\Presenter\AccountPresenterTest.cs" />
     <Compile Include="PresentationTests\Presenter\EditBillPresenterTest.cs" />
     <Compile Include="PresentationTests\Presenter\MainWindowPresenterTest.cs" />
     <Compile Include="PresentationTests\Model\AccountModelTest.cs" />

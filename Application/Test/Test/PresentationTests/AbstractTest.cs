@@ -1,5 +1,6 @@
 ﻿using Domain;
 using System;
+using Test.Mock;
 
 namespace Test.PresentationTests
 {
@@ -8,8 +9,10 @@ namespace Test.PresentationTests
 
         #region Constructors
 
-        public AbstractTest()
+        protected AbstractTest()
         {
+            ServiceFactoryProxy.Singleton.SetServiceFactory(new MockServiceFactory());
+            ServiceFactory = ServiceFactoryProxy.Singleton.ServiceFactory;
         }
 
         #endregion
@@ -27,7 +30,7 @@ namespace Test.PresentationTests
 
         #region Properties
 
-
+        IServiceFactory ServiceFactory { get; }
 
         #endregion
 
@@ -46,6 +49,25 @@ namespace Test.PresentationTests
         #region Helper Methods
 
 
+        protected void CreateAccountData()
+        {
+            IAccountService service = MockAccountService.Singleton;
+            IAccount account = new Account();
+            account.CompanyName = "Haribo";
+            account.AccountBalance = 200.00m;
+            account.InterestRate = 3.9m;
+            account.GeneratePaymentSchedule(DateTime.Now, 20.00m);
+            service.AddAccount(account);
+        }
+
+        protected void CreatePayDayData()
+        {
+            IPayDayService service = MockPayDayService.Singleton;
+            IPayDay payDay = new PayDay();
+            payDay.Date = new DateTime(2017, 05, 05);
+            payDay.Amount = 1000.21m;
+            service.AddPayDay(payDay);
+        }
 
         #endregion
 

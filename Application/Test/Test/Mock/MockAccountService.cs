@@ -6,6 +6,7 @@ namespace Test.Mock
 {
     public class MockAccountService : IAccountService
     {
+        public static MockAccountService Singleton = new MockAccountService();
 
         public MockAccountService()
         {

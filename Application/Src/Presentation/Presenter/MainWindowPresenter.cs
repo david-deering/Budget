@@ -46,16 +46,6 @@ namespace Presentation
             AccountService.DeleteAccount(model.RecordId);
         }
 
-        public void MakeDatabaseEntries()
-        {
-            IAccount account = new Account();
-            account.CompanyName = "Haribo";
-            account.AccountBalance = 200.00m;
-            account.InterestRate = 3.9m;
-            account.GeneratePaymentSchedule(DateTime.Now, 20.00m);
-            AccountService.AddAccount(account);
-        }
-
         public string[] GetHeaderValues()
         {
             List<string> values = new List<string>();

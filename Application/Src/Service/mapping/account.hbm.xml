@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" namespace="Domain" assembly="Domain">
-    <class name="Account" table="budget.Account" lazy="false" optimistic-lock="dirty" dynamic-update="true">
+    <class name="Account" table="Account" lazy="false" optimistic-lock="dirty" dynamic-update="true">
         <id name="RecordId">
             <generator class="native" />
         </id>
