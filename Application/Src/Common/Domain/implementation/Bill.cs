@@ -15,9 +15,10 @@ namespace Domain
 
         #region Properties
 
+        public virtual string ConfirmationNumber { get; set; }
         public virtual DateTime DateOwed { get; set; }
         public virtual decimal MonthlyPayment { get; set; }
-        public bool Paid { get; set; }
+        public virtual bool Paid { get; set; }
         public virtual int RecordId { get; set; }
 
         #endregion

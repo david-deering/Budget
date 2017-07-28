@@ -50,6 +50,12 @@
     <Compile Include="AccountWindow.Designer.cs">
       <DependentUpon>AccountWindow.cs</DependentUpon>
     </Compile>
+    <Compile Include="AddIncomeWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddIncomeWindow.Designer.cs">
+      <DependentUpon>AddIncomeWindow.cs</DependentUpon>
+    </Compile>
     <Compile Include="EditBillWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -66,6 +72,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="AccountWindow.resx">
       <DependentUpon>AccountWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddIncomeWindow.resx">
+      <DependentUpon>AddIncomeWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EditBillWindow.resx">
       <DependentUpon>EditBillWindow.cs</DependentUpon>
@@ -110,7 +119,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="cfg\hibernate.cfg.xml" />
+    <EmbeddedResource Include="cfg\hibernate.cfg.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

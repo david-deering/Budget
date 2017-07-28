@@ -59,6 +59,7 @@
     <Compile Include="databaseConnection\interface\IDatabaseConnection.cs" />
     <Compile Include="databaseConnection\interface\IDatabaseConnectionFactory.cs" />
     <Compile Include="service\AccountService.cs" />
+    <Compile Include="service\PayDayService.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="mapping\bill.hbm.xml">
@@ -73,6 +74,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="mapping\account.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="mapping\payday.hbm.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

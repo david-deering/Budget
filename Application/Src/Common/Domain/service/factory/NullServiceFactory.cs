@@ -16,14 +16,14 @@ namespace Domain
 
         #region Public Methods
 
-        public virtual IBillService CreateBillService(string databaseId, string sessionid)
-        {
-            return NullBillService.Singleton;
-        }
-
         public virtual IAccountService CreateAccountService()
         {
             return NullAccountService.Singleton;
+        }
+
+        public virtual IPayDayService CreatePayDayService()
+        {
+            return NullPayDayService.Singleton;
         }
         #endregion
 

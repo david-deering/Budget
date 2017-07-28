@@ -26,6 +26,7 @@ namespace Presentation
         public void EditBill(BillModel model)
         {
             IBill bill = Service.GetBill(model.RecordId);
+            bill.ConfirmationNumber = model.ConfirmationNumber;
             bill.DateOwed = model.DateOwed;
             bill.MonthlyPayment = model.MonthlyPayment;
             bill.Paid = model.Paid;

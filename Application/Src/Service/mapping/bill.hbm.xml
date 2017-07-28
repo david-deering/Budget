@@ -1,12 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" namespace="Domain" assembly="Domain">
-    <class name="Bill" table="thing.Bill" lazy="false" optimistic-lock="dirty" dynamic-update="true">
+    <class name="Bill" table="budget.Bill" lazy="false" optimistic-lock="dirty" dynamic-update="true">
         <id name="RecordId">
             <generator class="native" />
         </id>
 
+        <property name="ConfirmationNumber" />
         <property name="DateOwed" />
         <property name="MonthlyPayment" />
+        <property name="Paid" />
 
         <!--<many-to-one name="AccountBills" class="Account" column="BillRecordId" />-->
         

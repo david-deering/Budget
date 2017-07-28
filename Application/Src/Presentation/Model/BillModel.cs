@@ -17,6 +17,7 @@ namespace Presentation
 
         #region Properties
 
+        public string ConfirmationNumber { get; set; }
         public DateTime DateOwed { get; set; }
         public decimal MonthlyPayment { get; set; }
         public int ParentId { get; set; }
@@ -29,6 +30,7 @@ namespace Presentation
 
         public void CopyFrom(IBill bill)
         {
+            ConfirmationNumber = bill.ConfirmationNumber;
             DateOwed = bill.DateOwed;
             MonthlyPayment = bill.MonthlyPayment;
             Paid = bill.Paid;

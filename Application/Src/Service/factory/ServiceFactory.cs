@@ -31,6 +31,14 @@ namespace Service
 
         }
 
+        public override IPayDayService CreatePayDayService()
+        {
+            IDatabaseConnectionFactory databaseConnectionFactory = DatabaseConnectionFactoryRepository.FindOrCreateDatabaseConnectionFactory(string.Empty);
+            IDatabaseConnection databaseConnection = databaseConnectionFactory.FindOrCreateDatabaseConnection(string.Empty);
+
+            return new PayDayService(databaseConnection);
+        }
+
         #endregion
 
     }

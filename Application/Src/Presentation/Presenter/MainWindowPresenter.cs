@@ -12,16 +12,16 @@ namespace Presentation
 
         public MainWindowPresenter()
         {
-            BillService = Factory.CreateBillService(string.Empty, string.Empty);
             AccountService = Factory.CreateAccountService();
+            PayDayService = Factory.CreatePayDayService();
         }
 
         #endregion
 
         #region Properties
 
-        private IBillService BillService { get; set; }
         private IAccountService AccountService { get; set; }
+        private IPayDayService PayDayService { get; set; }
 
         #endregion
 
@@ -35,6 +35,11 @@ namespace Presentation
         #endregion
 
         #region Public Methods
+
+        public PayDayModel[] GetPayDaysInMonth(DateTime date)
+        {
+            return PayDayService.GetPayDays().Where(pd => pd.Date.Month == date.Month && pd.Date.Year == date.Year).Select(CreateModel).ToArray();
+        }
 
         public void DeleteAccount(AccountModel model)
         {
@@ -77,6 +82,13 @@ namespace Presentation
         #endregion
 
         #region Helper Methods
+
+        private PayDayModel CreateModel(IPayDay payday)
+        {
+            PayDayModel model = new PayDayModel();
+            model.CopyFrom(payday);
+            return model;
+        }
 
         private AccountModel GetAccount(IAccount account)
         {

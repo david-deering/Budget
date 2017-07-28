@@ -41,17 +41,19 @@
   <ItemGroup>
     <Compile Include="implementation\Bill.cs" />
     <Compile Include="implementation\Account.cs" />
+    <Compile Include="implementation\PayDay.cs" />
     <Compile Include="interface\IBill.cs" />
     <Compile Include="interface\IAccount.cs" />
+    <Compile Include="interface\IPayDay.cs" />
     <Compile Include="map\ThreadSafeMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="service\factory\IServiceFactory.cs" />
     <Compile Include="service\factory\NullServiceFactory.cs" />
     <Compile Include="service\factory\ServiceFactoryProxy.cs" />
     <Compile Include="service\implementation\NullAccountService.cs" />
-    <Compile Include="service\implementation\NullBillService.cs" />
+    <Compile Include="service\implementation\NullPayDayService.cs" />
     <Compile Include="service\interface\IAccountService.cs" />
-    <Compile Include="service\interface\IBillService.cs" />
+    <Compile Include="service\interface\IPaydayService.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

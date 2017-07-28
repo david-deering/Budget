@@ -40,8 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Facade\PayDaySaveFacade.cs" />
+    <Compile Include="Model\PayDayModel.cs" />
     <Compile Include="Presenter\AbstractPresenter.cs" />
     <Compile Include="Presenter\AccountPresenter.cs" />
+    <Compile Include="Presenter\PayDayPresenter.cs" />
     <Compile Include="Presenter\EditBillPresenter.cs" />
     <Compile Include="Facade\AccountSaveFacade.cs" />
     <Compile Include="Presenter\MainWindowPresenter.cs" />
