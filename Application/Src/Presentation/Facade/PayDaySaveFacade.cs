@@ -32,6 +32,12 @@ namespace Presentation
             return payDay;
         }
 
+        public IPayDay Apply(PayDayModel model, IPayDay payDay)
+        {
+            payDay.Date = model.Date;
+            payDay.Amount = model.Amount;
+            return payDay;
+        }
 
         #endregion
 

@@ -11,7 +11,7 @@ namespace Test.Mock
 
         public MockPayDayService()
         {
-            RecordIdGenerator = 0;
+            RecordIdGenerator = 1;
             PayDays = new List<IPayDay>();
         }
 
@@ -33,7 +33,9 @@ namespace Test.Mock
                 return;
             }
 
+            payDay.RecordId = RecordIdGenerator;
             PayDays.Add(payDay);
+            RecordIdGenerator++;
         }
 
         public void DeletePayDay(int recordId)

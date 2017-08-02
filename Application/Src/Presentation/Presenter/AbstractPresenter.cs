@@ -9,6 +9,7 @@ namespace Presentation
 
         protected AbstractPresenter()
         {
+            Factory = ServiceFactoryProxy.Singleton.ServiceFactory;
         }
 
         #endregion
@@ -16,7 +17,7 @@ namespace Presentation
         #region Properties
 
 
-        protected IServiceFactory Factory = ServiceFactoryProxy.Singleton.ServiceFactory;
+        protected IServiceFactory Factory { get; private set; }
 
         #endregion
 

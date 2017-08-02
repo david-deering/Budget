@@ -1,6 +1,6 @@
 ﻿namespace mainWindow
 {
-    partial class AddIncomeWindow
+    partial class IncomeWindow
     {
         /// <summary>
         /// Required designer variable.
@@ -100,6 +100,7 @@
             this.buttonCancel.TabIndex = 12;
             this.buttonCancel.Text = "Cancel";
             this.buttonCancel.UseVisualStyleBackColor = true;
+            this.buttonCancel.Click += new System.EventHandler(this.buttonCancel_Click);
             // 
             // buttonSave
             // 
@@ -119,7 +120,7 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonSave);
-            this.Name = "AddIncomeWindow";
+            this.Name = "IncomeWindow";
             this.Text = "AddIncome";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();

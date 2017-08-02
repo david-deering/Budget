@@ -5,15 +5,21 @@ using System.Windows.Forms;
 
 namespace mainWindow
 {
-    public partial class AddIncomeWindow : Form
+    public partial class IncomeWindow : Form
     {
-        public AddIncomeWindow()
+        public IncomeWindow()
         {
             InitializeComponent();
             Presenter = new PayDayPresenter();
             Model = new PayDayModel();
         }
 
+        public IncomeWindow(PayDayModel model)
+        {
+            InitializeComponent();
+            Presenter = new PayDayPresenter();
+            Model = model;
+        }
         #region Properties
 
         private PayDayModel Model { get; }
@@ -27,10 +33,15 @@ namespace mainWindow
         {
             Model.Date = DateTime.Parse(textBoxDateDue.Text);
             Model.Amount = decimal.Parse(textBoxAmount.Text);
-            Presenter.AddPayDay(Model);
+            Presenter.SavePayDay(Model);
             Close();
         }
 
         #endregion
+
+        private void buttonCancel_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
     }
 }

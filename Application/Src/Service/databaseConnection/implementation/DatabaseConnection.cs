@@ -86,7 +86,7 @@ namespace Service
             {
                 transaction.Commit();
             }
-            catch
+            catch (Exception e)
             {
                 transaction.Rollback();
                 throw new ArgumentException("Exception_FailedToFlush");

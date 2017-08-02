@@ -1,6 +1,5 @@
 ﻿using Service;
 using System;
-using System.Drawing;
 using System.Windows.Forms;
 
 namespace MainWindow
@@ -18,14 +17,14 @@ namespace MainWindow
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             MainWindow MW = new MainWindow();
-            int width = SystemInformation.VirtualScreen.Width;
-            int height = SystemInformation.VirtualScreen.Height;
-            int windowWidth = 1310;
-            int windowHeight = 760;
-            int pointX = width / 3;
-            int pointY = height / 3;
-            MW.DesktopLocation = new Point(pointX, pointY);
-            MW.Size = new Size(windowWidth, windowHeight);
+            //int width = SystemInformation.VirtualScreen.Width;
+            //int height = SystemInformation.VirtualScreen.Height;
+            //int windowWidth = 1310;
+            //int windowHeight = 760;
+            //int pointX = width / 3;
+            //int pointY = height / 3;
+            //MW.DesktopLocation = new Point(pointX, pointY);
+            //MW.Size = new Size(windowWidth, windowHeight);
             Application.Run(MW);
         }
     }

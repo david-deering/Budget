@@ -66,6 +66,7 @@
     <Compile Include="PresentationTests\Model\AccountModelTest.cs" />
     <Compile Include="PresentationTests\Model\AddAccountModelTest.cs" />
     <Compile Include="PresentationTests\Model\BillModelTest.cs" />
+    <Compile Include="PresentationTests\Presenter\PayDayPresenterTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

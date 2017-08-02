@@ -19,14 +19,25 @@ namespace Presentation.Presenter
 
         #region Public Methods
 
-        public void AddPayDay(PayDayModel model)
+        public void SavePayDay(PayDayModel model)
         {
-            IPayDay payDay = Apply(model);
-            Service.AddPayDay(payDay);
+            IPayDay payDayExists = Service.GetPayDay(model.RecordId);
+            PayDaySaveFacade facade = new PayDaySaveFacade();
+
+            if (payDayExists == null)
+            {
+                IPayDay payDay = facade.Apply(model);
+                Service.AddPayDay(payDay);
+                return;
+            }
+
+            payDayExists = facade.Apply(model, payDayExists);
+            Service.UpdatePayDay(payDayExists);
         }
-        public PayDayModel GetPayDay(PayDayModel model)
+        public PayDayModel GetPayDay(int recordId)
         {
-            IPayDay payDay = Service.GetPayDay(model.RecordId);
+            PayDayModel model = new PayDayModel();
+            IPayDay payDay = Service.GetPayDay(recordId);
             model.CopyFrom(payDay);
             return model;
         }
@@ -47,12 +58,6 @@ namespace Presentation.Presenter
         #endregion
 
         #region Private Method
-
-        private IPayDay Apply(PayDayModel model)
-        {
-            PayDaySaveFacade facade = new PayDaySaveFacade();
-            return facade.Apply(model);
-        }
 
         private PayDayModel CreateModel(IPayDay payday)
         {

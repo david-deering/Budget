@@ -1,4 +1,5 @@
 ﻿using Domain;
+using Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,24 +37,15 @@ namespace Presentation
 
         #region Public Methods
 
-        public PayDayModel[] GetPayDaysInMonth(DateTime date)
-        {
-            return PayDayService.GetPayDays().Where(pd => pd.Date.Month == date.Month && pd.Date.Year == date.Year).Select(CreateModel).ToArray();
-        }
 
         public void DeleteAccount(AccountModel model)
         {
             AccountService.DeleteAccount(model.RecordId);
         }
 
-        public string[] GetHeaderValues()
+        public void DeleteIncome(PayDayModel model)
         {
-            List<string> values = new List<string>();
-            values.Add(Header1);
-            values.Add(Header2);
-            values.Add(Header3);
-            values.Add(Header4);
-            return values.ToArray();
+            PayDayService.DeletePayDay(model.RecordId);
         }
 
         public AccountModel[] GetAccounts()
@@ -68,7 +60,25 @@ namespace Presentation
 
             return accounts.Select(GetAccount).ToArray();
         }
+        public string[] GetHeaderValues()
+        {
+            List<string> values = new List<string>();
+            values.Add(Header1);
+            values.Add(Header2);
+            values.Add(Header3);
+            values.Add(Header4);
+            return values.ToArray();
+        }
+        public PayDayModel[] GetPayDaysInMonth(DateTime date)
+        {
+            return PayDayService.GetPayDays().Where(pd => pd.Date.Month == date.Month && pd.Date.Year == date.Year).Select(CreateModel).ToArray();
+        }
 
+        public DateDecimal[] GetBudget()
+        {
+            BudgetDirector director = new BudgetDirector();
+            return director.Construct();
+        }
         #endregion
 
         #region Helper Methods

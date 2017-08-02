@@ -89,6 +89,7 @@ namespace Test.PresentationTests.Presenter
         [TearDown]
         public void TearDown()
         {
+            MockAccountService.Singleton.ClearMockService();
         }
 
         #region Helper Methods

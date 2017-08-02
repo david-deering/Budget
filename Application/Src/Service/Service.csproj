@@ -43,6 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="budgetCalc\balancer\Balancer.cs" />
+    <Compile Include="budgetCalc\director\BudgetDirector.cs" />
+    <Compile Include="budgetCalc\builder\PayPeriodBuilder.cs" />
+    <Compile Include="budgetCalc\interface\IPayPeriodBuilder.cs" />
     <Compile Include="databaseConnection\implementation\DatabaseConnectionFactoryRepository.cs" />
     <Compile Include="databaseConnection\implementation\NullDatabaseConnection.cs" />
     <Compile Include="databaseConnection\implementation\NullDatabaseConnectionFactory.cs" />
@@ -78,6 +82,7 @@
   <ItemGroup>
     <EmbeddedResource Include="mapping\payday.hbm.xml" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

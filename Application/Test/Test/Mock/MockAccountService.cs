@@ -38,6 +38,14 @@ namespace Test.Mock
             Bills.Add(bill);
         }
 
+        public void ClearMockService()
+        {
+            AccountRecordIdGenerator = 1;
+            Accounts.Clear();
+            BillRecordIdGenerator = 1;
+            Bills.Clear();
+        }
+
         public void DeleteAccount(int recordId)
         {
             IAccount account = Accounts.FirstOrDefault(b => b.RecordId == recordId);

@@ -1,6 +1,6 @@
 ﻿namespace mainWindow
 {
-    partial class AccountWindow
+    partial class SaveAccountWindow
     {
         /// <summary>
         /// Required designer variable.
@@ -214,7 +214,7 @@
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.tableLayoutPanelAccount);
-            this.Name = "AccountWindow";
+            this.Name = "SaveAccountWindow";
             this.Text = "Account";
             this.tableLayoutPanelAccount.ResumeLayout(false);
             this.tableLayoutPanelAccount.PerformLayout();

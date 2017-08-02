@@ -54,6 +54,7 @@
     <Compile Include="service\implementation\NullPayDayService.cs" />
     <Compile Include="service\interface\IAccountService.cs" />
     <Compile Include="service\interface\IPaydayService.cs" />
+    <Compile Include="transfer\DateDecimal.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

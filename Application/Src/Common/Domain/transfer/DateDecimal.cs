@@ -1,15 +1,16 @@
-﻿using Domain;
-using System;
+﻿using System;
 
-namespace Presentation
+namespace Domain
 {
-    public class PayDayModel
+    public class DateDecimal
     {
 
         #region Constructors
 
-        public PayDayModel()
+        public DateDecimal(DateTime date, decimal number)
         {
+            Date = date;
+            Amount = number;
         }
 
         #endregion
@@ -17,22 +18,13 @@ namespace Presentation
         #region Properties
 
         public DateTime Date { get; set; }
-
         public decimal Amount { get; set; }
-
-        public int RecordId { get; set; }
 
         #endregion
 
         #region Public Methods
 
 
-        public void CopyFrom(IPayDay payDay)
-        {
-            Date = payDay.Date;
-            Amount = payDay.Amount;
-            RecordId = payDay.RecordId;
-        }
 
         #endregion
 

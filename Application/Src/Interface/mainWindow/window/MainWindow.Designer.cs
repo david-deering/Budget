@@ -35,12 +35,16 @@ namespace MainWindow
             this.buttonNextMonth = new System.Windows.Forms.Button();
             this.labelMonth = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.buttonCalcBudget = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
-            this.listView2 = new System.Windows.Forms.ListView();
+            this.listViewBudget = new System.Windows.Forms.ListView();
+            this.columnHeaderBAmount = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderBDate = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.buttonEdit = new System.Windows.Forms.Button();
             this.btnDeleteAccount = new System.Windows.Forms.Button();
             this.btnAddAccount = new System.Windows.Forms.Button();
             this.IncomePanel = new System.Windows.Forms.Panel();
+            this.buttonDeleteIncome = new System.Windows.Forms.Button();
             this.buttonAddIncome = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.labelTotalIncome = new System.Windows.Forms.Label();
@@ -57,6 +61,7 @@ namespace MainWindow
             this.columnHeaderDateDue = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderPaid = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnConfirmationNumber = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.buttonViewAccounts = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -66,6 +71,7 @@ namespace MainWindow
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.buttonViewAccounts);
             this.panel1.Controls.Add(this.tableLayoutPanel2);
             this.panel1.Controls.Add(this.panel2);
             this.panel1.Controls.Add(this.buttonEdit);
@@ -75,7 +81,7 @@ namespace MainWindow
             this.panel1.Controls.Add(this.tableLayoutPanel1);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1290, 570);
+            this.panel1.Size = new System.Drawing.Size(1344, 618);
             this.panel1.TabIndex = 0;
             // 
             // tableLayoutPanel2
@@ -134,12 +140,23 @@ namespace MainWindow
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.buttonCalcBudget);
             this.panel2.Controls.Add(this.label3);
-            this.panel2.Controls.Add(this.listView2);
+            this.panel2.Controls.Add(this.listViewBudget);
             this.panel2.Location = new System.Drawing.Point(989, 270);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(293, 295);
+            this.panel2.Size = new System.Drawing.Size(352, 345);
             this.panel2.TabIndex = 8;
+            // 
+            // buttonCalcBudget
+            // 
+            this.buttonCalcBudget.Location = new System.Drawing.Point(130, 298);
+            this.buttonCalcBudget.Name = "buttonCalcBudget";
+            this.buttonCalcBudget.Size = new System.Drawing.Size(107, 23);
+            this.buttonCalcBudget.TabIndex = 7;
+            this.buttonCalcBudget.Text = "Calculate Budget";
+            this.buttonCalcBudget.UseVisualStyleBackColor = true;
+            this.buttonCalcBudget.Click += new System.EventHandler(this.buttonCalcBudget_Click);
             // 
             // label3
             // 
@@ -147,7 +164,7 @@ namespace MainWindow
             this.label3.AutoSize = true;
             this.label3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(78, 9);
+            this.label3.Location = new System.Drawing.Point(108, 9);
             this.label3.MinimumSize = new System.Drawing.Size(105, 26);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(139, 26);
@@ -155,17 +172,31 @@ namespace MainWindow
             this.label3.Text = "Weekly Budget";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // listView2
+            // listViewBudget
             // 
-            this.listView2.Location = new System.Drawing.Point(3, 38);
-            this.listView2.Name = "listView2";
-            this.listView2.Size = new System.Drawing.Size(280, 254);
-            this.listView2.TabIndex = 0;
-            this.listView2.UseCompatibleStateImageBehavior = false;
+            this.listViewBudget.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeaderBAmount,
+            this.columnHeaderBDate});
+            this.listViewBudget.Location = new System.Drawing.Point(3, 38);
+            this.listViewBudget.Name = "listViewBudget";
+            this.listViewBudget.Size = new System.Drawing.Size(340, 254);
+            this.listViewBudget.TabIndex = 0;
+            this.listViewBudget.UseCompatibleStateImageBehavior = false;
+            this.listViewBudget.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeaderBAmount
+            // 
+            this.columnHeaderBAmount.Text = "Amount";
+            this.columnHeaderBAmount.Width = 175;
+            // 
+            // columnHeaderBDate
+            // 
+            this.columnHeaderBDate.Text = "Date";
+            this.columnHeaderBDate.Width = 175;
             // 
             // buttonEdit
             // 
-            this.buttonEdit.Location = new System.Drawing.Point(112, 10);
+            this.buttonEdit.Location = new System.Drawing.Point(774, 9);
             this.buttonEdit.Name = "buttonEdit";
             this.buttonEdit.Size = new System.Drawing.Size(98, 23);
             this.buttonEdit.TabIndex = 4;
@@ -175,7 +206,7 @@ namespace MainWindow
             // 
             // btnDeleteAccount
             // 
-            this.btnDeleteAccount.Location = new System.Drawing.Point(216, 10);
+            this.btnDeleteAccount.Location = new System.Drawing.Point(878, 9);
             this.btnDeleteAccount.Name = "btnDeleteAccount";
             this.btnDeleteAccount.Size = new System.Drawing.Size(98, 23);
             this.btnDeleteAccount.TabIndex = 3;
@@ -185,7 +216,7 @@ namespace MainWindow
             // 
             // btnAddAccount
             // 
-            this.btnAddAccount.Location = new System.Drawing.Point(8, 10);
+            this.btnAddAccount.Location = new System.Drawing.Point(8, 11);
             this.btnAddAccount.Name = "btnAddAccount";
             this.btnAddAccount.Size = new System.Drawing.Size(98, 23);
             this.btnAddAccount.TabIndex = 2;
@@ -195,6 +226,7 @@ namespace MainWindow
             // 
             // IncomePanel
             // 
+            this.IncomePanel.Controls.Add(this.buttonDeleteIncome);
             this.IncomePanel.Controls.Add(this.buttonAddIncome);
             this.IncomePanel.Controls.Add(this.label5);
             this.IncomePanel.Controls.Add(this.labelTotalIncome);
@@ -203,12 +235,22 @@ namespace MainWindow
             this.IncomePanel.Controls.Add(this.listViewIncome);
             this.IncomePanel.Location = new System.Drawing.Point(988, 0);
             this.IncomePanel.Name = "IncomePanel";
-            this.IncomePanel.Size = new System.Drawing.Size(294, 264);
+            this.IncomePanel.Size = new System.Drawing.Size(353, 264);
             this.IncomePanel.TabIndex = 1;
+            // 
+            // buttonDeleteIncome
+            // 
+            this.buttonDeleteIncome.Location = new System.Drawing.Point(85, 237);
+            this.buttonDeleteIncome.Name = "buttonDeleteIncome";
+            this.buttonDeleteIncome.Size = new System.Drawing.Size(75, 23);
+            this.buttonDeleteIncome.TabIndex = 8;
+            this.buttonDeleteIncome.Text = "Delete Income";
+            this.buttonDeleteIncome.UseVisualStyleBackColor = true;
+            this.buttonDeleteIncome.Click += new System.EventHandler(this.buttonDeleteIncome_Click);
             // 
             // buttonAddIncome
             // 
-            this.buttonAddIncome.Location = new System.Drawing.Point(209, 237);
+            this.buttonAddIncome.Location = new System.Drawing.Point(4, 237);
             this.buttonAddIncome.Name = "buttonAddIncome";
             this.buttonAddIncome.Size = new System.Drawing.Size(75, 23);
             this.buttonAddIncome.TabIndex = 7;
@@ -222,7 +264,7 @@ namespace MainWindow
             this.label5.AutoSize = true;
             this.label5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(79, 16);
+            this.label5.Location = new System.Drawing.Point(109, 13);
             this.label5.MinimumSize = new System.Drawing.Size(105, 26);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(146, 26);
@@ -235,7 +277,7 @@ namespace MainWindow
             this.labelTotalIncome.AutoSize = true;
             this.labelTotalIncome.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.labelTotalIncome.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.labelTotalIncome.Location = new System.Drawing.Point(111, 238);
+            this.labelTotalIncome.Location = new System.Drawing.Point(275, 238);
             this.labelTotalIncome.Name = "labelTotalIncome";
             this.labelTotalIncome.Size = new System.Drawing.Size(69, 22);
             this.labelTotalIncome.TabIndex = 3;
@@ -246,7 +288,7 @@ namespace MainWindow
             this.label1.AutoSize = true;
             this.label1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(4, 238);
+            this.label1.Location = new System.Drawing.Point(166, 238);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(103, 22);
             this.label1.TabIndex = 2;
@@ -269,20 +311,21 @@ namespace MainWindow
             this.listViewIncome.FullRowSelect = true;
             this.listViewIncome.Location = new System.Drawing.Point(3, 45);
             this.listViewIncome.Name = "listViewIncome";
-            this.listViewIncome.Size = new System.Drawing.Size(281, 186);
+            this.listViewIncome.Size = new System.Drawing.Size(341, 186);
             this.listViewIncome.TabIndex = 0;
             this.listViewIncome.UseCompatibleStateImageBehavior = false;
             this.listViewIncome.View = System.Windows.Forms.View.Details;
+            this.listViewIncome.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listViewIncome_MouseDoubleClick);
             // 
             // columnHeaderAmount
             // 
             this.columnHeaderAmount.Text = "Amount";
-            this.columnHeaderAmount.Width = 147;
+            this.columnHeaderAmount.Width = 175;
             // 
             // columnHeaderDate
             // 
             this.columnHeaderDate.Text = "Date";
-            this.columnHeaderDate.Width = 138;
+            this.columnHeaderDate.Width = 175;
             // 
             // tableLayoutPanel1
             // 
@@ -325,36 +368,46 @@ namespace MainWindow
             // 
             this.columnBalance.Text = "Account Balance";
             this.columnBalance.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnBalance.Width = 100;
+            this.columnBalance.Width = 125;
             // 
             // columnHeaderMonthlyPayment
             // 
             this.columnHeaderMonthlyPayment.Text = "Monthly Payment";
             this.columnHeaderMonthlyPayment.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeaderMonthlyPayment.Width = 100;
+            this.columnHeaderMonthlyPayment.Width = 125;
             // 
             // columnHeaderDateDue
             // 
             this.columnHeaderDateDue.Text = "Date Due";
             this.columnHeaderDateDue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeaderDateDue.Width = 100;
+            this.columnHeaderDateDue.Width = 125;
             // 
             // columnHeaderPaid
             // 
             this.columnHeaderPaid.Text = "Status";
             this.columnHeaderPaid.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeaderPaid.Width = 125;
             // 
             // columnConfirmationNumber
             // 
             this.columnConfirmationNumber.Text = "Confirmation Number";
             this.columnConfirmationNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnConfirmationNumber.Width = 280;
+            this.columnConfirmationNumber.Width = 250;
+            // 
+            // buttonViewAccounts
+            // 
+            this.buttonViewAccounts.Location = new System.Drawing.Point(112, 11);
+            this.buttonViewAccounts.Name = "buttonViewAccounts";
+            this.buttonViewAccounts.Size = new System.Drawing.Size(98, 23);
+            this.buttonViewAccounts.TabIndex = 10;
+            this.buttonViewAccounts.Text = "View Accounts";
+            this.buttonViewAccounts.UseVisualStyleBackColor = true;
             // 
             // MainWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1309, 599);
+            this.ClientSize = new System.Drawing.Size(1368, 642);
             this.Controls.Add(this.panel1);
             this.Name = "MainWindow";
             this.Text = "Budget";
@@ -388,7 +441,7 @@ namespace MainWindow
         private Button buttonEdit;
         private Panel panel2;
         private Label label3;
-        private ListView listView2;
+        private ListView listViewBudget;
         private Label label5;
         private TableLayoutPanel tableLayoutPanel2;
         private ColumnHeader columnHeaderMonthlyPayment;
@@ -400,6 +453,11 @@ namespace MainWindow
         private Button buttonAddIncome;
         private ColumnHeader columnHeaderAmount;
         private ColumnHeader columnHeaderDate;
+        private ColumnHeader columnHeaderBDate;
+        private ColumnHeader columnHeaderBAmount;
+        private Button buttonCalcBudget;
+        private Button buttonDeleteIncome;
+        private Button buttonViewAccounts;
     }
 }
 

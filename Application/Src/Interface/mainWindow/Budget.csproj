@@ -44,42 +44,43 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AccountWindow.cs">
+    <Compile Include="window\DateInputValidator.cs" />
+    <Compile Include="window\SaveAccountWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AccountWindow.Designer.cs">
-      <DependentUpon>AccountWindow.cs</DependentUpon>
+    <Compile Include="window\SaveAccountWindow.Designer.cs">
+      <DependentUpon>SaveAccountWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="AddIncomeWindow.cs">
+    <Compile Include="window\IncomeWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddIncomeWindow.Designer.cs">
-      <DependentUpon>AddIncomeWindow.cs</DependentUpon>
+    <Compile Include="window\IncomeWindow.Designer.cs">
+      <DependentUpon>IncomeWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="EditBillWindow.cs">
+    <Compile Include="window\EditBillWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="EditBillWindow.Designer.cs">
+    <Compile Include="window\EditBillWindow.Designer.cs">
       <DependentUpon>EditBillWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="MainWindow.cs">
+    <Compile Include="window\MainWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainWindow.Designer.cs">
+    <Compile Include="window\MainWindow.Designer.cs">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="AccountWindow.resx">
-      <DependentUpon>AccountWindow.cs</DependentUpon>
+    <EmbeddedResource Include="window\SaveAccountWindow.resx">
+      <DependentUpon>SaveAccountWindow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AddIncomeWindow.resx">
-      <DependentUpon>AddIncomeWindow.cs</DependentUpon>
+    <EmbeddedResource Include="window\IncomeWindow.resx">
+      <DependentUpon>IncomeWindow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="EditBillWindow.resx">
+    <EmbeddedResource Include="window\EditBillWindow.resx">
       <DependentUpon>EditBillWindow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainWindow.resx">
+    <EmbeddedResource Include="window\MainWindow.resx">
       <DependentUpon>MainWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

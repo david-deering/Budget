@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AbstractServiceTest.cs" />
+    <Compile Include="builder\PayPeriodBuilderTest.cs" />
     <Compile Include="databaseConnection\DatabaseConnectionFactoryRepositoryTest.cs" />
     <Compile Include="databaseConnection\DatabaseConnectionFactoryTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -71,6 +72,10 @@
     <ProjectReference Include="..\..\Src\Service\Service.csproj">
       <Project>{630c4233-55d8-48b8-97c7-45d7b1a8ecd7}</Project>
       <Name>Service</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Test\PresentationTest.csproj">
+      <Project>{c1d5b372-8e92-4e94-b237-7d352127995d}</Project>
+      <Name>PresentationTest</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

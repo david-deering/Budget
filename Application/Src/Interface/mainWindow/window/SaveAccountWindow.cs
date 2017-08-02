@@ -5,11 +5,11 @@ using System.Windows.Forms;
 
 namespace mainWindow
 {
-    public partial class AccountWindow : Form
+    public partial class SaveAccountWindow : Form
     {
         #region Constructors
 
-        public AccountWindow()
+        public SaveAccountWindow()
         {
             InitializeComponent();
             tableLayoutPanelAddAccount.Visible = true;
@@ -17,7 +17,7 @@ namespace mainWindow
             Presenter = new AccountPresenter();
         }
 
-        public AccountWindow(AccountModel model)
+        public SaveAccountWindow(AccountModel model)
         {
             InitializeComponent();
             EditMode = true;
@@ -39,6 +39,7 @@ namespace mainWindow
         private AccountPresenter Presenter { get; set; }
 
         #endregion
+
         #region Event Handlers
 
 
