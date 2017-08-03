@@ -1,11 +1,11 @@
-﻿using Presentation;
+﻿using mainWindow.window;
+using Presentation;
 using System;
 using System.Globalization;
-using System.Windows.Forms;
 
 namespace mainWindow
 {
-    public partial class EditBillWindow : Form
+    public partial class EditBillWindow : AbstractWindow
     {
         public EditBillWindow(BillModel model)
         {
@@ -14,15 +14,7 @@ namespace mainWindow
             textBoxDateDue.Text = model.DateOwed.ToShortDateString();
             textBoxPayment.Text = decimal.Round(model.MonthlyPayment, 2, MidpointRounding.AwayFromZero).ToString(CultureInfo.InvariantCulture);
             Model = model;
-
-            if (model.Paid)
-            {
-                checkBoxPaid.Checked = true;
-            }
-            else
-            {
-                checkBoxPaid.Checked = false;
-            }
+            checkBoxPaid.Checked = model.Paid;
 
             Presenter = new EditBillPresenter();
         }
@@ -49,10 +41,16 @@ namespace mainWindow
             Close();
         }
 
+        private void textBoxDateDue_TextChanged(object sender, EventArgs e)
+        {
+            ValidateDate(textBoxDateDue, buttonSave);
+        }
+
         #region Helper Methods
 
 
 
         #endregion
+
     }
 }

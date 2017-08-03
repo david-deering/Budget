@@ -1,11 +1,11 @@
-﻿using Presentation;
+﻿using mainWindow.window;
+using Presentation;
 using System;
 using System.Globalization;
-using System.Windows.Forms;
 
 namespace mainWindow
 {
-    public partial class SaveAccountWindow : Form
+    public partial class SaveAccountWindow : AbstractWindow
     {
         #region Constructors
 
@@ -40,6 +40,13 @@ namespace mainWindow
 
         #endregion
 
+        #region Public Methods
+
+
+
+        #endregion
+
+
         #region Event Handlers
 
 
@@ -70,15 +77,14 @@ namespace mainWindow
 
             Presenter.SaveAccount(model);
             Close();
-            return;
         }
 
+        private void textBoxFirstDueDate_TextChanged(object sender, EventArgs e)
+        {
+            ValidateDate(textBoxFirstDueDate, buttonSave);
+        }
         #endregion
 
-        #region Public Methods
 
-
-
-        #endregion
     }
 }

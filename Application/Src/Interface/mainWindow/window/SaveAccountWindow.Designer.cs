@@ -157,7 +157,7 @@
             this.labelFirstPaymentDate.Name = "labelFirstPaymentDate";
             this.labelFirstPaymentDate.Size = new System.Drawing.Size(91, 23);
             this.labelFirstPaymentDate.TabIndex = 9;
-            this.labelFirstPaymentDate.Text = "First Due Date";
+            this.labelFirstPaymentDate.Text = "Date Due";
             this.labelFirstPaymentDate.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // labelAmount
@@ -177,6 +177,7 @@
             this.textBoxFirstDueDate.Name = "textBoxFirstDueDate";
             this.textBoxFirstDueDate.Size = new System.Drawing.Size(174, 20);
             this.textBoxFirstDueDate.TabIndex = 4;
+            this.textBoxFirstDueDate.TextChanged += new System.EventHandler(this.textBoxFirstDueDate_TextChanged);
             // 
             // textBoxAmountDue
             // 
@@ -204,7 +205,7 @@
             this.tableLayoutPanelAddAccount.TabIndex = 2;
             this.tableLayoutPanelAddAccount.Visible = false;
             // 
-            // AccountWindow
+            // SaveAccountWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;

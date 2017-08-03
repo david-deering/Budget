@@ -30,6 +30,7 @@ namespace MainWindow
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.buttonViewAccounts = new System.Windows.Forms.Button();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.buttonPrevMonth = new System.Windows.Forms.Button();
             this.buttonNextMonth = new System.Windows.Forms.Button();
@@ -61,7 +62,6 @@ namespace MainWindow
             this.columnHeaderDateDue = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderPaid = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnConfirmationNumber = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.buttonViewAccounts = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -83,6 +83,15 @@ namespace MainWindow
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1344, 618);
             this.panel1.TabIndex = 0;
+            // 
+            // buttonViewAccounts
+            // 
+            this.buttonViewAccounts.Location = new System.Drawing.Point(112, 11);
+            this.buttonViewAccounts.Name = "buttonViewAccounts";
+            this.buttonViewAccounts.Size = new System.Drawing.Size(98, 23);
+            this.buttonViewAccounts.TabIndex = 10;
+            this.buttonViewAccounts.Text = "View Accounts";
+            this.buttonViewAccounts.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel2
             // 
@@ -361,7 +370,7 @@ namespace MainWindow
             // 
             // columnHeaderName
             // 
-            this.columnHeaderName.Text = "CompanyName";
+            this.columnHeaderName.Text = "Company";
             this.columnHeaderName.Width = 220;
             // 
             // columnBalance
@@ -393,15 +402,6 @@ namespace MainWindow
             this.columnConfirmationNumber.Text = "Confirmation Number";
             this.columnConfirmationNumber.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.columnConfirmationNumber.Width = 250;
-            // 
-            // buttonViewAccounts
-            // 
-            this.buttonViewAccounts.Location = new System.Drawing.Point(112, 11);
-            this.buttonViewAccounts.Name = "buttonViewAccounts";
-            this.buttonViewAccounts.Size = new System.Drawing.Size(98, 23);
-            this.buttonViewAccounts.TabIndex = 10;
-            this.buttonViewAccounts.Text = "View Accounts";
-            this.buttonViewAccounts.UseVisualStyleBackColor = true;
             // 
             // MainWindow
             // 

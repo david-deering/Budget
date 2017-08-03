@@ -78,6 +78,7 @@
             this.textBoxDateDue.Name = "textBoxDateDue";
             this.textBoxDateDue.Size = new System.Drawing.Size(145, 20);
             this.textBoxDateDue.TabIndex = 2;
+            this.textBoxDateDue.TextChanged += new System.EventHandler(this.textBoxDateDue_TextChanged);
             // 
             // label4
             // 

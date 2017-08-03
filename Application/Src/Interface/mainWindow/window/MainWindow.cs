@@ -1,5 +1,6 @@
 ﻿using Domain;
 using mainWindow;
+using mainWindow.window;
 using Presentation;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ using System.Windows.Forms;
 
 namespace MainWindow
 {
-    public partial class MainWindow : Form
+    public partial class MainWindow : AbstractWindow
     {
         #region Constructors
 
@@ -169,7 +170,7 @@ namespace MainWindow
 
         private void CreateIncomeRow(PayDayModel model)
         {
-            string combinedRowContent = string.Format("{0}, {1}", model.Amount, model.Date);
+            string combinedRowContent = string.Format("{0}, {1}", DollarFormat(model.Amount), model.Date);
             string[] splitRowContent = combinedRowContent.Split(',');
             ListViewItem item = new ListViewItem(splitRowContent);
             item.Tag = model;
@@ -188,9 +189,11 @@ namespace MainWindow
             }
 
             string paidStatus = billModel.Paid ? Paid : NotPaid;
+            string accountBalanceDisplay = DollarFormat(model.AccountBalance);
+            string monthlyPaymentDisplay = DollarFormat(billModel.MonthlyPayment);
 
             billModel.ParentId = model.RecordId;
-            string combinedRowContent = string.Format("{0},{1},{2},{3},{4}, {5}", model.CompanyName, decimal.Round(model.AccountBalance, 2, MidpointRounding.AwayFromZero), decimal.Round(billModel.MonthlyPayment, 2, MidpointRounding.AwayFromZero), billModel.DateOwed.ToShortDateString(), paidStatus, billModel.ConfirmationNumber);
+            string combinedRowContent = string.Format("{0},{1},{2},{3},{4},{5}", model.CompanyName, accountBalanceDisplay, monthlyPaymentDisplay, billModel.DateOwed.ToShortDateString(), paidStatus, billModel.ConfirmationNumber);
             string[] splitRowContent = combinedRowContent.Split(',');
             ListViewItem item = new ListViewItem(splitRowContent);
             item.Tag = billModel;
@@ -209,13 +212,8 @@ namespace MainWindow
         {
             AccountModel[] accountModels = Presenter.GetAccounts();
             accountModels.ToList().ForEach(CreateBillRow);
-            List<ListViewItem> items = lvMain.Items.Cast<ListViewItem>().ToList();
-            items = items.OrderBy(i => ((BillModel)i.Tag).DateOwed).ToList();
-            lvMain.Items.Clear();
-            foreach (ListViewItem item in items)
-            {
-                lvMain.Items.Add(item);
-            }
+            OrderByDate();
+
         }
 
         private void ShowBudget()
@@ -254,6 +252,17 @@ namespace MainWindow
             }
 
             return selectedAccount;
+        }
+
+        private void OrderByDate()
+        {
+            List<ListViewItem> items = lvMain.Items.Cast<ListViewItem>().ToList();
+            items = items.OrderBy(i => ((BillModel)i.Tag).DateOwed).ToList();
+            lvMain.Items.Clear();
+            foreach (ListViewItem item in items)
+            {
+                lvMain.Items.Add(item);
+            }
         }
 
         private PayDayModel GetSelectedIncome()

@@ -44,7 +44,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="window\DateInputValidator.cs" />
+    <Compile Include="validator\DateInputValidator.cs" />
+    <Compile Include="window\AbstractWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="window\SaveAccountWindow.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -91,6 +91,7 @@
             this.textBoxDateDue.Name = "textBoxDateDue";
             this.textBoxDateDue.Size = new System.Drawing.Size(97, 20);
             this.textBoxDateDue.TabIndex = 2;
+            this.textBoxDateDue.TextChanged += new System.EventHandler(this.textBoxDateDue_TextChanged);
             // 
             // buttonCancel
             // 
@@ -112,7 +113,7 @@
             this.buttonSave.UseVisualStyleBackColor = true;
             this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
             // 
-            // AddIncomeWindow
+            // IncomeWindow
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;

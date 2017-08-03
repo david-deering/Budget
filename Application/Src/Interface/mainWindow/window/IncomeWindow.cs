@@ -1,34 +1,37 @@
-﻿using Presentation;
+﻿using mainWindow.window;
+using Presentation;
 using Presentation.Presenter;
 using System;
-using System.Windows.Forms;
 
 namespace mainWindow
 {
-    public partial class IncomeWindow : Form
+    public partial class IncomeWindow : AbstractWindow
     {
         public IncomeWindow()
         {
-            InitializeComponent();
-            Presenter = new PayDayPresenter();
+            Initialize();
             Model = new PayDayModel();
         }
 
         public IncomeWindow(PayDayModel model)
         {
-            InitializeComponent();
-            Presenter = new PayDayPresenter();
+            Initialize();
             Model = model;
         }
         #region Properties
 
         private PayDayModel Model { get; }
-
         private PayDayPresenter Presenter { get; set; }
 
         #endregion
 
         #region eventHandlers
+
+        private void buttonCancel_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
         private void buttonSave_Click(object sender, EventArgs e)
         {
             Model.Date = DateTime.Parse(textBoxDateDue.Text);
@@ -37,11 +40,20 @@ namespace mainWindow
             Close();
         }
 
+        private void textBoxDateDue_TextChanged(object sender, EventArgs e)
+        {
+            ValidateDate(textBoxDateDue, buttonSave);
+        }
+
         #endregion
 
-        private void buttonCancel_Click(object sender, EventArgs e)
+        #region Helper Methods
+        private void Initialize()
         {
-            Close();
+            InitializeComponent();
+            Presenter = new PayDayPresenter();
         }
+        #endregion
+
     }
 }
