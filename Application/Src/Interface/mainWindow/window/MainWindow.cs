@@ -1,4 +1,4 @@
-﻿using Budget;
+using Budget;
 using Budget.window;
 using Domain;
 using Presentation;
@@ -48,7 +48,39 @@ namespace MainWindow
             ClearAndReload();
         }
 
+        private void activateAccountToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AccountModel model = GetSelectedAccount(listViewAccounts);
+            model.IsActive = true;
+            Presenter.UpdateAccount(model);
+            ClearAndReload();
+        }
+
+        private void addAnAccountToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveAccountWindow window = new SaveAccountWindow();
+            ShowWindow(window);
+        }
+
+        private void addIncomeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            IncomeWindow window = new IncomeWindow();
+            ShowWindow(window);
+        }
+
+        private void buttonAddAccount_Click(object sender, EventArgs e)
+        {
+            SaveAccountWindow window = new SaveAccountWindow();
+            ShowWindow(window);
+        }
+
         private void buttonAddIncome_Click(object sender, EventArgs e)
+        {
+            IncomeWindow window = new IncomeWindow();
+            ShowWindow(window);
+        }
+
+        private void buttonAddIncome_Click_1(object sender, EventArgs e)
         {
             IncomeWindow window = new IncomeWindow();
             ShowWindow(window);
@@ -58,6 +90,55 @@ namespace MainWindow
         {
             listViewBudget.Items.Clear();
             ShowBudget();
+        }
+
+        private void buttonDeleteAccount_Click(object sender, EventArgs e)
+        {
+            AccountModel model = GetSelectedAccount(listViewAccounts);
+            if (model == null)
+            {
+                return;
+            }
+
+            ConfirmDeleteWindow window = new ConfirmDeleteWindow(model);
+            ShowWindow(window);
+
+        }
+
+        private void buttonDeleteIncome_Click(object sender, EventArgs e)
+        {
+            PayDayModel model = GetSelectedIncome(listViewConfigIncome);
+            if (model == null)
+            {
+                return;
+            }
+
+            ConfirmDeleteWindow window = new ConfirmDeleteWindow(model);
+            ShowWindow(window);
+        }
+
+        private void buttonEditAccount_Click(object sender, EventArgs e)
+        {
+            AccountModel model = GetSelectedAccount(listViewAccounts);
+            if (model == null)
+            {
+                return;
+            }
+
+            SaveAccountWindow window = new SaveAccountWindow(model);
+            ShowWindow(window);
+        }
+
+        private void buttonEditIncome_Click(object sender, EventArgs e)
+        {
+            PayDayModel model = GetSelectedIncome(listViewConfigIncome);
+            if (model == null)
+            {
+                return;
+            }
+
+            IncomeWindow window = new IncomeWindow(model);
+            ShowWindow(window);
         }
 
         private void buttonNextMonth_Click(object sender, EventArgs e)
@@ -74,11 +155,34 @@ namespace MainWindow
             ClearAndReload();
         }
 
+        private void buttonSetActive_Click(object sender, EventArgs e)
+        {
+            AccountModel model = GetSelectedAccount(listViewAccounts);
+            if (model == null)
+            {
+                return;
+            }
+
+            model.IsActive = !model.IsActive;
+            Presenter.UpdateAccount(model);
+            ClearAndReload();
+        }
+
         private void confirmDeleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AccountModel model = GetSelectedAccount(listViewAccounts);
             Presenter.DeleteAccount(model.RecordId);
             ClearAndReload();
+        }
+
+        private void confirmDeleteToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            PayDayModel model = GetSelectedIncome(listViewIncome);
+            Presenter.DeleteIncome(model.RecordId);
+            listViewIncome.Items.Clear();
+            listViewBudget.Items.Clear();
+            labelTotalIncome.Text = "";
+            ShowIncome();
         }
 
         private void listView1_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -185,14 +289,17 @@ namespace MainWindow
             contextMenuStripIncome.Show(Cursor.Position);
         }
 
+        private void toolStripMenuItem1Deactivate_Click(object sender, EventArgs e)
+        {
+            AccountModel model = GetSelectedAccount(listViewAccounts);
+            model.IsActive = false;
+            Presenter.UpdateAccount(model);
+            ClearAndReload();
+        }
+
         #endregion
 
         #region Helper Methods
-
-        private void GenerateBillsIfNewMonth()
-        {
-            Presenter.GenerateBillsIfNewMonth();
-        }
 
         private void ClearAndReload()
         {
@@ -260,6 +367,11 @@ namespace MainWindow
             listViewIncome.Items.Add(item);
             listViewConfigIncome.Items.Add(clonedItem);
             TotalIncome += model.Amount;
+        }
+
+        private void GenerateBillsIfNewMonth()
+        {
+            Presenter.GenerateBillsIfNewMonth();
         }
 
         private AccountModel GetSelectedAccount(ListView view)
@@ -396,115 +508,6 @@ namespace MainWindow
 
         #endregion
 
-        private void addAnAccountToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            SaveAccountWindow window = new SaveAccountWindow();
-            ShowWindow(window);
-        }
 
-        private void toolStripMenuItem1Deactivate_Click(object sender, EventArgs e)
-        {
-            AccountModel model = GetSelectedAccount(listViewAccounts);
-            model.IsActive = false;
-            Presenter.UpdateAccount(model);
-            ClearAndReload();
-        }
-
-        private void activateAccountToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            AccountModel model = GetSelectedAccount(listViewAccounts);
-            model.IsActive = true;
-            Presenter.UpdateAccount(model);
-            ClearAndReload();
-        }
-
-        private void addIncomeToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            IncomeWindow window = new IncomeWindow();
-            ShowWindow(window);
-        }
-
-        private void confirmDeleteToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            PayDayModel model = GetSelectedIncome(listViewIncome);
-            Presenter.DeleteIncome(model.RecordId);
-            listViewIncome.Items.Clear();
-            listViewBudget.Items.Clear();
-            labelTotalIncome.Text = "";
-            ShowIncome();
-        }
-        private void buttonAddAccount_Click(object sender, EventArgs e)
-        {
-            SaveAccountWindow window = new SaveAccountWindow();
-            ShowWindow(window);
-        }
-
-        private void buttonEditAccount_Click(object sender, EventArgs e)
-        {
-            AccountModel model = GetSelectedAccount(listViewAccounts);
-            if (model == null)
-            {
-                return;
-            }
-
-            SaveAccountWindow window = new SaveAccountWindow(model);
-            ShowWindow(window);
-        }
-
-        private void buttonDeleteAccount_Click(object sender, EventArgs e)
-        {
-            AccountModel model = GetSelectedAccount(listViewAccounts);
-            if (model == null)
-            {
-                return;
-            }
-
-            ConfirmDeleteWindow window = new ConfirmDeleteWindow(model);
-            ShowWindow(window);
-
-        }
-
-        private void buttonDeleteIncome_Click(object sender, EventArgs e)
-        {
-            PayDayModel model = GetSelectedIncome(listViewConfigIncome);
-            if (model == null)
-            {
-                return;
-            }
-
-            ConfirmDeleteWindow window = new ConfirmDeleteWindow(model);
-            ShowWindow(window);
-        }
-
-        private void buttonAddIncome_Click_1(object sender, EventArgs e)
-        {
-            IncomeWindow window = new IncomeWindow();
-            ShowWindow(window);
-        }
-
-        private void buttonEditIncome_Click(object sender, EventArgs e)
-        {
-            PayDayModel model = GetSelectedIncome(listViewConfigIncome);
-            if (model == null)
-            {
-                return;
-            }
-
-            IncomeWindow window = new IncomeWindow(model);
-            ShowWindow(window);
-        }
-
-        private void buttonSetActive_Click(object sender, EventArgs e)
-        {
-            AccountModel model = GetSelectedAccount(listViewAccounts);
-            if (model == null)
-            {
-                return;
-            }
-
-            model.IsActive = !model.IsActive;
-            Presenter.UpdateAccount(model);
-            ClearAndReload();
-        }
     }
 }
