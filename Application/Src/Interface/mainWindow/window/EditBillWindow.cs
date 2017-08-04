@@ -1,9 +1,9 @@
-﻿using mainWindow.window;
+﻿using Budget.window;
 using Presentation;
 using System;
 using System.Globalization;
 
-namespace mainWindow
+namespace Budget
 {
     public partial class EditBillWindow : AbstractWindow
     {

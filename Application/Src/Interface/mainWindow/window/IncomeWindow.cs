@@ -1,26 +1,25 @@
-﻿using mainWindow.window;
+﻿using Budget.window;
 using Presentation;
 using Presentation.Presenter;
 using System;
 
-namespace mainWindow
+namespace Budget
 {
     public partial class IncomeWindow : AbstractWindow
     {
         public IncomeWindow()
         {
             Initialize();
-            Model = new PayDayModel();
         }
 
         public IncomeWindow(PayDayModel model)
         {
-            Initialize();
-            Model = model;
+            Initialize(model);
         }
+
         #region Properties
 
-        private PayDayModel Model { get; }
+        private PayDayModel Model { get; set; }
         private PayDayPresenter Presenter { get; set; }
 
         #endregion
@@ -51,7 +50,16 @@ namespace mainWindow
         private void Initialize()
         {
             InitializeComponent();
+            Model = new PayDayModel();
             Presenter = new PayDayPresenter();
+        }
+
+        private void Initialize(PayDayModel model)
+        {
+            Initialize();
+            Model = model;
+            textBoxDateDue.Text = Model.Date.ToShortDateString();
+            textBoxAmount.Text = DollarFormat(Model.Amount);
         }
         #endregion
 

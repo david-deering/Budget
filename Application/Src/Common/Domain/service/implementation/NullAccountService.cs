@@ -50,6 +50,11 @@
             return new IBill[0];
         }
 
+        public IBill[] GetBills()
+        {
+            return new IBill[0];
+        }
+
         public virtual void UpdateAccount(IAccount account)
         {
             //  do nothing

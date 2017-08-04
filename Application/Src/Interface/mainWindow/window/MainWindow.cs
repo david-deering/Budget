@@ -1,6 +1,6 @@
-﻿using Domain;
-using mainWindow;
-using mainWindow.window;
+﻿using Budget;
+using Budget.window;
+using Domain;
 using Presentation;
 using System;
 using System.Collections.Generic;
@@ -21,18 +21,19 @@ namespace MainWindow
             Presenter = new MainWindowPresenter();
             DisplayedDate = DateTime.Now;
             TotalIncome = 0;
-            labelMonth.Text = $@"{DisplayedDate:MMMM}, {DisplayedDate:yyyy}";
+            labelMonth.Text = string.Format("{0}, {1}", DisplayedDate.ToString("MMMM"), DisplayedDate.ToString("yyyy"));
+            GenerateBillsIfNewMonth();
             ShowBills();
             ShowIncome();
+            ShowAccounts();
         }
 
         #endregion
 
         #region Properties
 
-        private MainWindowPresenter Presenter { get; set; }
         private DateTime DisplayedDate { get; set; }
-
+        private MainWindowPresenter Presenter { get; set; }
         private decimal TotalIncome { get; set; }
 
         #endregion
@@ -41,26 +42,16 @@ namespace MainWindow
         private const string NotPaid = "Not paid";
 
         #region Event Handlers
-        private void btnAddAccount_Click(object sender, EventArgs e)
+
+        private void Action_FormClosing(object sender, FormClosingEventArgs e)
         {
-            SaveAccountWindow window = new SaveAccountWindow();
-            window.FormClosing += Action_FormClosing;
-            window.FormClosing += Action_FormClosing;
-            window.WindowState = FormWindowState.Normal;
-            window.StartPosition = FormStartPosition.Manual;
-            window.BringToFront();
-            window.Location = new Point(700, 300);
-            window.Show();
+            ClearAndReload();
         }
+
         private void buttonAddIncome_Click(object sender, EventArgs e)
         {
             IncomeWindow window = new IncomeWindow();
-            window.FormClosing += Action_FormClosing;
-            window.WindowState = FormWindowState.Normal;
-            window.StartPosition = FormStartPosition.Manual;
-            window.BringToFront();
-            window.Location = new Point(700, 300);
-            window.Show();
+            ShowWindow(window);
         }
 
         private void buttonCalcBudget_Click(object sender, EventArgs e)
@@ -68,43 +59,6 @@ namespace MainWindow
             listViewBudget.Items.Clear();
             ShowBudget();
         }
-        private void btnDeleteAccount_Click(object sender, EventArgs e)
-        {
-            AccountModel selectedAccount = GetSelectedAccount();
-            Presenter.DeleteAccount(selectedAccount);
-            lvMain.Items.Clear();
-            ShowBills();
-
-        }
-
-        private void buttonDeleteIncome_Click(object sender, EventArgs e)
-        {
-            PayDayModel model = GetSelectedIncome();
-            Presenter.DeleteIncome(model);
-            listViewIncome.Items.Clear();
-            listViewBudget.Items.Clear();
-            labelTotalIncome.Text = "";
-            ShowIncome();
-        }
-
-        private void buttonEditAccount_Click(object sender, EventArgs e)
-        {
-            AccountModel selectedAccount = GetSelectedAccount();
-            if (selectedAccount == null)
-            {
-                return;
-            }
-
-            SaveAccountWindow window = new SaveAccountWindow(selectedAccount);
-            window.FormClosing += Action_FormClosing;
-            window.FormClosing += Action_FormClosing;
-            window.WindowState = FormWindowState.Normal;
-            window.StartPosition = FormStartPosition.Manual;
-            window.BringToFront();
-            window.Location = new Point(700, 300);
-            window.Show();
-        }
-
 
         private void buttonNextMonth_Click(object sender, EventArgs e)
         {
@@ -120,10 +74,10 @@ namespace MainWindow
             ClearAndReload();
         }
 
-
-
-        private void Action_FormClosing(object sender, FormClosingEventArgs e)
+        private void confirmDeleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            AccountModel model = GetSelectedAccount(listViewAccounts);
+            Presenter.DeleteAccount(model.RecordId);
             ClearAndReload();
         }
 
@@ -133,53 +87,141 @@ namespace MainWindow
             ListViewItem item = info.Item;
 
             EditBillWindow window = new EditBillWindow(item.Tag as BillModel);
-            window.FormClosing += Action_FormClosing;
-            window.WindowState = FormWindowState.Normal;
-            window.StartPosition = FormStartPosition.Manual;
-            window.BringToFront();
-            window.Location = new Point(700, 300);
-            window.Show();
+            ShowWindow(window);
+        }
+
+        private void listViewAccount_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            int columnClicked = e.Column;
+            switch (columnClicked)
+            {
+                case 0:
+                    SortAccountsByCompanyName();
+                    break;
+                case 1:
+                    SortAccountsByAccountBalance();
+                    break;
+                case 2:
+                    SortAccountsShowAllActiveAccountsOnTop();
+                    break;
+            }
+        }
+
+        private void listViewAccounts_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+
+            ListViewHitTestInfo info = listViewAccounts.HitTest(e.X, e.Y);
+            ListViewItem item = info.Item;
+            SaveAccountWindow window = new SaveAccountWindow(item.Tag as AccountModel);
+            ShowWindow(window);
+        }
+
+        private void listViewAccounts_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button != MouseButtons.Right)
+            {
+                return;
+            }
+            ListViewHitTestInfo info = listViewAccounts.HitTest(e.X, e.Y);
+            ListViewItem item = info.Item;
+
+            if (item == null)
+            {
+                contextMenuStrip1Account.Items[0].Visible = true;
+                contextMenuStrip1Account.Items[1].Visible = false;
+                contextMenuStrip1Account.Items[2].Visible = false;
+                contextMenuStrip1Account.Items[3].Visible = false;
+            }
+            else
+            {
+                contextMenuStrip1Account.Items[0].Visible = false;
+                contextMenuStrip1Account.Items[1].Visible = true;
+
+                AccountModel model = item.Tag as AccountModel;
+                if (model.IsActive)
+                {
+                    contextMenuStrip1Account.Items[2].Visible = true;
+                    contextMenuStrip1Account.Items[3].Visible = false;
+                }
+                else
+                {
+                    contextMenuStrip1Account.Items[2].Visible = false;
+                    contextMenuStrip1Account.Items[3].Visible = true;
+                }
+            }
+
+            contextMenuStrip1Account.Show(Cursor.Position);
         }
 
         private void listViewIncome_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             ListViewHitTestInfo info = listViewIncome.HitTest(e.X, e.Y);
             ListViewItem item = info.Item;
-
             IncomeWindow window = new IncomeWindow(item.Tag as PayDayModel);
-            window.FormClosing += Action_FormClosing;
-            window.WindowState = FormWindowState.Normal;
-            window.StartPosition = FormStartPosition.Manual;
-            window.BringToFront();
-            window.Location = new Point(700, 300);
-            window.Show();
+            ShowWindow(window);
+        }
+
+        private void listViewIncome_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button != MouseButtons.Right)
+            {
+                return;
+            }
+
+            ListViewHitTestInfo info = listViewIncome.HitTest(e.X, e.Y);
+            ListViewItem item = info.Item;
+
+            if (item == null)
+            {
+                contextMenuStripIncome.Items[0].Visible = true;
+                contextMenuStripIncome.Items[1].Visible = false;
+            }
+            else
+            {
+                contextMenuStripIncome.Items[0].Visible = false;
+                contextMenuStripIncome.Items[1].Visible = true;
+            }
+
+            contextMenuStripIncome.Show(Cursor.Position);
         }
 
         #endregion
 
         #region Helper Methods
 
+        private void GenerateBillsIfNewMonth()
+        {
+            Presenter.GenerateBillsIfNewMonth();
+        }
+
         private void ClearAndReload()
         {
             lvMain.Items.Clear();
             listViewIncome.Items.Clear();
+            listViewConfigIncome.Items.Clear();
+            listViewAccounts.Items.Clear();
             TotalIncome = 0;
             ShowBills();
             ShowIncome();
+            ShowAccounts();
         }
 
-        private void CreateIncomeRow(PayDayModel model)
+        private void CreateAccountRow(AccountModel model)
         {
-            string combinedRowContent = string.Format("{0}, {1}", DollarFormat(model.Amount), model.Date);
+            string combinedRowContent = string.Format("{0},{1},{2},", model.CompanyName, DollarFormat(model.AccountBalance), model.IsActive);
             string[] splitRowContent = combinedRowContent.Split(',');
             ListViewItem item = new ListViewItem(splitRowContent);
             item.Tag = model;
-            listViewIncome.Items.Add(item);
-            TotalIncome += model.Amount;
+            listViewAccounts.Items.Add(item);
         }
 
         private void CreateBillRow(AccountModel model)
         {
+            if (!model.IsActive)
+            {
+                return;
+            }
+
             BillModel billModel = model.Bills.FirstOrDefault(bm => (bm.DateOwed.Month == DisplayedDate.Month) && (bm.DateOwed.Year == DisplayedDate.Year));
 
             //guard clause - no item
@@ -208,24 +250,22 @@ namespace MainWindow
             listViewBudget.Items.Add(item);
         }
 
-        private void ShowBills()
+        private void CreateIncomeRow(PayDayModel model)
         {
-            AccountModel[] accountModels = Presenter.GetAccounts();
-            accountModels.ToList().ForEach(CreateBillRow);
-            OrderByDate();
-
+            string combinedRowContent = string.Format("{0}, {1}", DollarFormat(model.Amount), model.Date);
+            string[] splitRowContent = combinedRowContent.Split(',');
+            ListViewItem item = new ListViewItem(splitRowContent);
+            item.Tag = model;
+            ListViewItem clonedItem = (ListViewItem)item.Clone();
+            listViewIncome.Items.Add(item);
+            listViewConfigIncome.Items.Add(clonedItem);
+            TotalIncome += model.Amount;
         }
 
-        private void ShowBudget()
-        {
-            DateDecimal[] budgets = Presenter.GetBudget();
-            budgets.ToList().ForEach(CreateBudgetRow);
-        }
-
-        private AccountModel GetSelectedAccount()
+        private AccountModel GetSelectedAccount(ListView view)
         {
             // guard clause - no selection
-            ListView.SelectedListViewItemCollection selectedItems = lvMain.SelectedItems;
+            ListView.SelectedListViewItemCollection selectedItems = view.SelectedItems;
             if (selectedItems.Count == 0)
             {
                 return null;
@@ -239,13 +279,7 @@ namespace MainWindow
             }
 
             // guard clause - unexpected type
-            BillModel selectedRow = selectedLvi.Tag as BillModel;
-            if (selectedRow == null)
-            {
-                return null;
-            }
-
-            AccountModel selectedAccount = Presenter.GetAccounts().FirstOrDefault(a => a.RecordId == selectedRow.ParentId);
+            AccountModel selectedAccount = selectedLvi.Tag as AccountModel;
             if (selectedAccount == null)
             {
                 return null;
@@ -254,21 +288,10 @@ namespace MainWindow
             return selectedAccount;
         }
 
-        private void OrderByDate()
-        {
-            List<ListViewItem> items = lvMain.Items.Cast<ListViewItem>().ToList();
-            items = items.OrderBy(i => ((BillModel)i.Tag).DateOwed).ToList();
-            lvMain.Items.Clear();
-            foreach (ListViewItem item in items)
-            {
-                lvMain.Items.Add(item);
-            }
-        }
-
-        private PayDayModel GetSelectedIncome()
+        private PayDayModel GetSelectedIncome(ListView view)
         {
             // guard clause - no selection
-            ListView.SelectedListViewItemCollection selectedItems = listViewIncome.SelectedItems;
+            ListView.SelectedListViewItemCollection selectedItems = view.SelectedItems;
             if (selectedItems.Count == 0)
             {
                 return null;
@@ -291,14 +314,197 @@ namespace MainWindow
             return selectedRow;
         }
 
+        private void OrderByDate()
+        {
+            List<ListViewItem> items = lvMain.Items.Cast<ListViewItem>().ToList();
+            items = items.OrderBy(i => ((BillModel)i.Tag).DateOwed).ToList();
+            lvMain.Items.Clear();
+            foreach (ListViewItem item in items)
+            {
+                lvMain.Items.Add(item);
+            }
+        }
+
+        private void ShowAccounts()
+        {
+            AccountModel[] models = Presenter.GetAccounts();
+            models.OrderBy(a => a.CompanyName).ToList().ForEach(CreateAccountRow);
+        }
+
+        private void ShowBills()
+        {
+            AccountModel[] accountModels = Presenter.GetAccounts();
+            accountModels.ToList().ForEach(CreateBillRow);
+            OrderByDate();
+
+        }
+
+        private void ShowBudget()
+        {
+            DateDecimal[] budgets = Presenter.GetBudget();
+            budgets.ToList().ForEach(CreateBudgetRow);
+        }
+
         private void ShowIncome()
         {
-            PayDayModel[] model = Presenter.GetPayDaysInMonth(DisplayedDate);
-            model.OrderBy(pdm => pdm.Date).Where(pdm => pdm.Date.Month == DisplayedDate.Month && pdm.Date.Year == DisplayedDate.Year).ToList().ForEach(CreateIncomeRow);
+            PayDayModel[] models = Presenter.GetPayDaysInMonth(DisplayedDate);
+
+            if (models.Length < 1)
+            {
+                PayDayModel payDayModel = new PayDayModel();
+                payDayModel.Date = new DateTime(DisplayedDate.Year, DisplayedDate.Month, 1);
+                payDayModel.RecordId = 0;
+                payDayModel.Amount = 0;
+                Presenter.AddPayDay(payDayModel);
+                models = Presenter.GetPayDaysInMonth(DisplayedDate);
+            }
+
+            models.OrderBy(pdm => pdm.Date).Where(pdm => pdm.Date.Month == DisplayedDate.Month && pdm.Date.Year == DisplayedDate.Year).ToList().ForEach(CreateIncomeRow);
             labelTotalIncome.Text = TotalIncome.ToString(CultureInfo.InvariantCulture);
+        }
+
+        private void ShowWindow(Form window)
+        {
+            window.FormClosing += Action_FormClosing;
+            window.WindowState = FormWindowState.Normal;
+            window.StartPosition = FormStartPosition.Manual;
+            window.BringToFront();
+            window.Location = new Point(700, 300);
+            window.Show();
+        }
+
+        private void SortAccountsByAccountBalance()
+        {
+            listViewAccounts.Items.Clear();
+            AccountModel[] models = Presenter.GetAccounts();
+            models.OrderBy(a => a.AccountBalance).ToList().ForEach(CreateAccountRow);
+        }
+
+        private void SortAccountsByCompanyName()
+        {
+            listViewAccounts.Items.Clear();
+            AccountModel[] models = Presenter.GetAccounts();
+            models.OrderBy(a => a.CompanyName).ToList().ForEach(CreateAccountRow);
+        }
+
+        private void SortAccountsShowAllActiveAccountsOnTop()
+        {
+            listViewAccounts.Items.Clear();
+            AccountModel[] models = Presenter.GetAccounts();
+            models.OrderBy(a => !a.IsActive).ToList().ForEach(CreateAccountRow);
         }
 
         #endregion
 
+        private void addAnAccountToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SaveAccountWindow window = new SaveAccountWindow();
+            ShowWindow(window);
+        }
+
+        private void toolStripMenuItem1Deactivate_Click(object sender, EventArgs e)
+        {
+            AccountModel model = GetSelectedAccount(listViewAccounts);
+            model.IsActive = false;
+            Presenter.UpdateAccount(model);
+            ClearAndReload();
+        }
+
+        private void activateAccountToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AccountModel model = GetSelectedAccount(listViewAccounts);
+            model.IsActive = true;
+            Presenter.UpdateAccount(model);
+            ClearAndReload();
+        }
+
+        private void addIncomeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            IncomeWindow window = new IncomeWindow();
+            ShowWindow(window);
+        }
+
+        private void confirmDeleteToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            PayDayModel model = GetSelectedIncome(listViewIncome);
+            Presenter.DeleteIncome(model.RecordId);
+            listViewIncome.Items.Clear();
+            listViewBudget.Items.Clear();
+            labelTotalIncome.Text = "";
+            ShowIncome();
+        }
+        private void buttonAddAccount_Click(object sender, EventArgs e)
+        {
+            SaveAccountWindow window = new SaveAccountWindow();
+            ShowWindow(window);
+        }
+
+        private void buttonEditAccount_Click(object sender, EventArgs e)
+        {
+            AccountModel model = GetSelectedAccount(listViewAccounts);
+            if (model == null)
+            {
+                return;
+            }
+
+            SaveAccountWindow window = new SaveAccountWindow(model);
+            ShowWindow(window);
+        }
+
+        private void buttonDeleteAccount_Click(object sender, EventArgs e)
+        {
+            AccountModel model = GetSelectedAccount(listViewAccounts);
+            if (model == null)
+            {
+                return;
+            }
+
+            ConfirmDeleteWindow window = new ConfirmDeleteWindow(model);
+            ShowWindow(window);
+
+        }
+
+        private void buttonDeleteIncome_Click(object sender, EventArgs e)
+        {
+            PayDayModel model = GetSelectedIncome(listViewConfigIncome);
+            if (model == null)
+            {
+                return;
+            }
+
+            ConfirmDeleteWindow window = new ConfirmDeleteWindow(model);
+            ShowWindow(window);
+        }
+
+        private void buttonAddIncome_Click_1(object sender, EventArgs e)
+        {
+            IncomeWindow window = new IncomeWindow();
+            ShowWindow(window);
+        }
+
+        private void buttonEditIncome_Click(object sender, EventArgs e)
+        {
+            PayDayModel model = GetSelectedIncome(listViewConfigIncome);
+            if (model == null)
+            {
+                return;
+            }
+
+            IncomeWindow window = new IncomeWindow(model);
+            ShowWindow(window);
+        }
+
+        private void buttonSetActive_Click(object sender, EventArgs e)
+        {
+            AccountModel model = GetSelectedAccount(listViewAccounts);
+            if (model == null)
+            {
+                return;
+            }
+
+            model.IsActive = !model.IsActive;
+            Presenter.UpdateAccount(model);
+            ClearAndReload();
+        }
     }
 }

@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace mainWindow.window
+namespace Budget.window
 {
     public class AbstractWindow : Form
     {

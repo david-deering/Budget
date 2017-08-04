@@ -1,9 +1,9 @@
-﻿using mainWindow.window;
+﻿using Budget.window;
 using Presentation;
 using System;
 using System.Globalization;
 
-namespace mainWindow
+namespace Budget
 {
     public partial class SaveAccountWindow : AbstractWindow
     {
@@ -13,6 +13,7 @@ namespace mainWindow
         {
             InitializeComponent();
             tableLayoutPanelAddAccount.Visible = true;
+            buttonDelete.Hide();
             EditMode = false;
             Presenter = new AccountPresenter();
         }

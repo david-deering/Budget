@@ -3,7 +3,7 @@ using System;
 
 namespace Presentation
 {
-    public class PayDayModel
+    public class PayDayModel : AbstractModel
     {
 
         #region Constructors

@@ -38,14 +38,35 @@ namespace Presentation
         #region Public Methods
 
 
-        public void DeleteAccount(AccountModel model)
+        public void AddPayDay(PayDayModel model)
         {
-            AccountService.DeleteAccount(model.RecordId);
+            PayDaySaveFacade facade = new PayDaySaveFacade();
+            IPayDay payDay = facade.Apply(model);
+            PayDayService.AddPayDay(payDay);
         }
 
-        public void DeleteIncome(PayDayModel model)
+
+        public void GenerateBillsIfNewMonth()
         {
-            PayDayService.DeletePayDay(model.RecordId);
+            IBill[] bills = AccountService.GetBills().Where(b => b.DateOwed.Month == DateTime.Today.Month).ToArray();
+
+            if (bills.Length != 0)
+            {
+                return;
+            }
+
+            AccountService.GetAccounts().Where(a => a.IsActive).ToList().ForEach(GenerateNewBill);
+
+        }
+
+        public void DeleteAccount(int recordId)
+        {
+            AccountService.DeleteAccount(recordId);
+        }
+
+        public void DeleteIncome(int recordId)
+        {
+            PayDayService.DeletePayDay(recordId);
         }
 
         public AccountModel[] GetAccounts()
@@ -60,6 +81,7 @@ namespace Presentation
 
             return accounts.Select(GetAccount).ToArray();
         }
+
         public string[] GetHeaderValues()
         {
             List<string> values = new List<string>();
@@ -79,6 +101,15 @@ namespace Presentation
             BudgetDirector director = new BudgetDirector();
             return director.Construct();
         }
+
+        public void UpdateAccount(AccountModel model)
+        {
+            IAccount account = AccountService.GetAccount(model.RecordId);
+            AccountSaveFacade facade = new AccountSaveFacade();
+            facade.Apply(model, account);
+            AccountService.UpdateAccount(account);
+        }
+
         #endregion
 
         #region Helper Methods
@@ -88,6 +119,20 @@ namespace Presentation
             PayDayModel model = new PayDayModel();
             model.CopyFrom(payday);
             return model;
+        }
+
+        private void GenerateNewBill(IAccount account)
+        {
+            List<IBill> bills = account.GetBills().ToList();
+            int lastIndex = bills.Count;
+            IBill lastBill = bills[lastIndex - 1];
+            IBill newBill = new Bill();
+            newBill.RecordId = 0;
+            newBill.DateOwed = lastBill.DateOwed.AddMonths(1);
+            newBill.MonthlyPayment = lastBill.MonthlyPayment;
+            newBill.Paid = false;
+            newBill.ConfirmationNumber = "";
+            account.AddBill(newBill);
         }
 
         private AccountModel GetAccount(IAccount account)

@@ -22,6 +22,7 @@ namespace Domain
         public virtual string CompanyName { get; set; }
         public virtual decimal AccountBalance { get; set; }
         public virtual decimal InterestRate { get; set; }
+        public virtual bool IsActive { get; set; }
         public virtual int RecordId { get; set; }
 
         protected ICollection<IBill> Bills { get; set; }
@@ -52,9 +53,6 @@ namespace Domain
         private void ConfigureBills(DateTime firstDueDate, decimal monthlyPayment)
         {
             Bills.Add(ConfigureBill(firstDueDate, monthlyPayment));
-            DateTime date = GetNextMonthDueDate(firstDueDate);
-            Bills.Add(ConfigureBill(date, monthlyPayment));
-
         }
 
         private IBill ConfigureBill(DateTime dueDate, decimal monthlyPayment)

@@ -26,6 +26,10 @@ namespace Presentation
 
         #region Public Methods
 
+        public void DeleteAccount(int recordId)
+        {
+            Service.DeleteAccount(recordId);
+        }
 
         public void EditAccount(AccountModel model)
         {
@@ -53,7 +57,7 @@ namespace Presentation
 
             if (!isValid)
             {
-                throw new ArgumentException("An account with that name already esists");
+                throw new ArgumentException("An account with that name already exists");
             }
 
             IAccount account = SaveFacade.Apply(model);

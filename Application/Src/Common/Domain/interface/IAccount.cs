@@ -9,6 +9,7 @@ namespace Domain
         string CompanyName { get; set; }
         decimal AccountBalance { get; set; }
         decimal InterestRate { get; set; }
+        bool IsActive { get; set; }
         int RecordId { get; set; }
 
         void AddBill(IBill bill);

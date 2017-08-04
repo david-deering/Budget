@@ -81,6 +81,13 @@ namespace Service
             return account.GetBills();
         }
 
+        public IBill[] GetBills()
+        {
+            IBill[] billsToBuild = Get<IBill>();
+
+            return billsToBuild;
+        }
+
 
         public void UpdateAccount(IAccount account)
         {

@@ -31,6 +31,7 @@ namespace Presentation
             account.AccountBalance = model.AccountBalance;
             account.CompanyName = model.CompanyName;
             account.InterestRate = model.InterestRate;
+            account.IsActive = model.IsActive;
             account.RecordId = 0;
 
             account.GeneratePaymentSchedule(model.FirstDueDate, model.AmountDue);
@@ -42,6 +43,7 @@ namespace Presentation
             account.AccountBalance = model.AccountBalance;
             account.CompanyName = model.CompanyName;
             account.InterestRate = model.InterestRate;
+            account.IsActive = model.IsActive;
         }
 
         public bool Validate(AddAccountModel model)

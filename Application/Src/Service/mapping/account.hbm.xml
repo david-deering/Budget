@@ -8,6 +8,7 @@
         <property name="CompanyName" />
         <property name="AccountBalance" />
         <property name="InterestRate" />
+        <property name="IsActive" />
 
         <set name="Bills" cascade="all-delete-orphan" lazy="true">
             <key column="AccountRecordId"/>

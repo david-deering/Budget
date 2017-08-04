@@ -13,6 +13,7 @@
 
         IBill GetBill(int recordId);
         IBill[] GetBills(int accountRecordId);
+        IBill[] GetBills();
 
         void UpdateAccount(IAccount account);
         void UpdateBill(IBill bill);

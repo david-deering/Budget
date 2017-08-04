@@ -45,8 +45,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="validator\DateInputValidator.cs" />
-    <Compile Include="window\AbstractWindow.cs">
+    <Compile Include="window\AbstractWindow\AbstractWindow.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="window\ConfirmDeleteWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="window\ConfirmDeleteWindow.Designer.cs">
+      <DependentUpon>ConfirmDeleteWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="window\SaveAccountWindow.cs">
       <SubType>Form</SubType>
@@ -74,6 +80,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="window\ConfirmDeleteWindow.resx">
+      <DependentUpon>ConfirmDeleteWindow.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="window\SaveAccountWindow.resx">
       <DependentUpon>SaveAccountWindow.cs</DependentUpon>
     </EmbeddedResource>

@@ -18,6 +18,10 @@ namespace Presentation.Presenter
         #endregion
 
         #region Public Methods
+        public void DeletePayDay(int recordId)
+        {
+            Service.DeletePayDay(recordId);
+        }
 
         public void SavePayDay(PayDayModel model)
         {

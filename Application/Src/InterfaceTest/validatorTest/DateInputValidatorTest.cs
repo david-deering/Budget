@@ -1,4 +1,4 @@
-﻿using mainWindow;
+﻿using Budget;
 using NUnit.Framework;
 
 namespace InterfaceTest.validatorTest

@@ -19,6 +19,7 @@ namespace Presentation
         public string CompanyName { get; set; }
         public decimal AccountBalance { get; set; }
         public decimal InterestRate { get; set; }
+        public bool IsActive { get; set; }
         public int RecordId { get; set; }
         public BillModel[] Bills { get; set; }
 
@@ -31,6 +32,7 @@ namespace Presentation
             CompanyName = account.CompanyName;
             AccountBalance = account.AccountBalance;
             InterestRate = account.InterestRate;
+            IsActive = account.IsActive;
             RecordId = account.RecordId;
 
             Bills = account.GetBills().Select(GetBill).ToArray();

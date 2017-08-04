@@ -23,8 +23,6 @@ namespace Presentation
 
         #region Public Methods
 
-
-
         #endregion
 
         #region Helper Methods

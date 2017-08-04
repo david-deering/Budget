@@ -9,6 +9,7 @@ namespace Presentation
 
         public AddAccountModel()
         {
+            IsActive = true;
         }
 
         #endregion
@@ -18,7 +19,7 @@ namespace Presentation
         public decimal AccountBalance { get; set; }
         public decimal AmountDue { get; set; }
         public decimal InterestRate { get; set; }
-
+        public bool IsActive { get; set; }
         public string CompanyName { get; set; }
 
         public DateTime FirstDueDate { get; set; }

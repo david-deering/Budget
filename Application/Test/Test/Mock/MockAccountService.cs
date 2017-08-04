@@ -79,6 +79,11 @@ namespace Test.Mock
             return account.GetBills();
         }
 
+        public IBill[] GetBills()
+        {
+            return Bills.ToArray();
+        }
+
         public void UpdateAccount(IAccount account)
         {
             DeleteAccount(account.RecordId);

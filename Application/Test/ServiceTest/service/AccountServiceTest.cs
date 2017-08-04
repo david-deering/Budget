@@ -1,6 +1,5 @@
 ﻿using Domain;
 using NUnit.Framework;
-using Service;
 using System;
 using System.Linq;
 
@@ -83,7 +82,7 @@ namespace Dmi.ServiceTest.service
             IBill[] bills = AccountService.GetBills(account.RecordId);
 
             // post-conditions
-            Assert.AreEqual(2, bills.Length);
+            Assert.AreEqual(1, bills.Length);
         }
 
 
@@ -208,5 +207,5 @@ namespace Dmi.ServiceTest.service
             AccountService.DeleteAccount(account.RecordId);
         }
     }
-        #endregion
+    #endregion
 }

@@ -1,4 +1,4 @@
-﻿namespace mainWindow
+﻿namespace Budget
 {
     partial class EditBillWindow
     {
