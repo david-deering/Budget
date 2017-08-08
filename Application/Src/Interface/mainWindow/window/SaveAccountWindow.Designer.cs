@@ -104,6 +104,7 @@
             this.textBoxName.Name = "textBoxName";
             this.textBoxName.Size = new System.Drawing.Size(174, 20);
             this.textBoxName.TabIndex = 1;
+            this.textBoxName.TextChanged += new System.EventHandler(this.textBoxName_TextChanged);
             // 
             // textBoxInterestRate
             // 
@@ -112,6 +113,8 @@
             this.textBoxInterestRate.Name = "textBoxInterestRate";
             this.textBoxInterestRate.Size = new System.Drawing.Size(174, 20);
             this.textBoxInterestRate.TabIndex = 2;
+            this.textBoxInterestRate.TextChanged += new System.EventHandler(this.textBoxInterestRate_TextChanged);
+
             // 
             // textBoxBalance
             // 
@@ -120,6 +123,8 @@
             this.textBoxBalance.Name = "textBoxBalance";
             this.textBoxBalance.Size = new System.Drawing.Size(174, 20);
             this.textBoxBalance.TabIndex = 3;
+            this.textBoxBalance.TextChanged += new System.EventHandler(this.textBoxBalance_TextChanged);
+
             // 
             // buttonSave
             // 
@@ -186,6 +191,7 @@
             this.textBoxAmountDue.Name = "textBoxAmountDue";
             this.textBoxAmountDue.Size = new System.Drawing.Size(174, 20);
             this.textBoxAmountDue.TabIndex = 5;
+            this.textBoxAmountDue.TextChanged += new System.EventHandler(this.textBoxAmountDue_TextChanged);
             // 
             // tableLayoutPanelAddAccount
             // 

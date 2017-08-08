@@ -16,7 +16,7 @@ namespace MainWindow
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            MainWindow MW = new MainWindow();
+            mainWindow.window.Budget MW = new mainWindow.window.Budget();
             //int width = SystemInformation.VirtualScreen.Width;
             //int height = SystemInformation.VirtualScreen.Height;
             //int windowWidth = 1310;

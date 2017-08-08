@@ -82,6 +82,7 @@
             this.textBoxAmount.Name = "textBoxAmount";
             this.textBoxAmount.Size = new System.Drawing.Size(97, 20);
             this.textBoxAmount.TabIndex = 1;
+            this.textBoxAmount.TextChanged += new System.EventHandler(this.textBoxAmount_TextChanged);
             // 
             // textBoxDateDue
             // 
@@ -122,7 +123,7 @@
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonSave);
             this.Name = "IncomeWindow";
-            this.Text = "AddIncome";
+            this.Text = "Income";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);

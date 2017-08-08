@@ -1,7 +1,10 @@
 ﻿using Budget.window;
+using mainWindow.window;
 using Presentation;
 using Presentation.Presenter;
 using System;
+using System.Drawing;
+using System.Globalization;
 
 namespace Budget
 {
@@ -35,7 +38,17 @@ namespace Budget
         {
             Model.Date = DateTime.Parse(textBoxDateDue.Text);
             Model.Amount = decimal.Parse(textBoxAmount.Text);
-            Presenter.SavePayDay(Model);
+
+            try
+            {
+                Presenter.SavePayDay(Model);
+            }
+            catch (Exception ex)
+            {
+                ErrorWindow window = new ErrorWindow(ex.Message);
+                ShowWindow(window);
+            }
+
             Close();
         }
 
@@ -44,12 +57,19 @@ namespace Budget
             ValidateDate(textBoxDateDue, buttonSave);
         }
 
+        private void textBoxAmount_TextChanged(object sender, EventArgs e)
+        {
+            ValidateDecimal(textBoxAmount, buttonSave);
+        }
+
         #endregion
 
         #region Helper Methods
         private void Initialize()
         {
             InitializeComponent();
+            textBoxAmount.BackColor = Color.Tomato;
+            textBoxDateDue.BackColor = Color.Tomato;
             Model = new PayDayModel();
             Presenter = new PayDayPresenter();
         }
@@ -59,7 +79,7 @@ namespace Budget
             Initialize();
             Model = model;
             textBoxDateDue.Text = Model.Date.ToShortDateString();
-            textBoxAmount.Text = DollarFormat(Model.Amount);
+            textBoxAmount.Text = decimal.Round(model.Amount, 2, MidpointRounding.AwayFromZero).ToString(CultureInfo.InvariantCulture);
         }
         #endregion
 

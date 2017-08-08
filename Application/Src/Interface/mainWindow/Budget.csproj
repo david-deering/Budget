@@ -11,6 +11,22 @@
     <AssemblyName>mainWindow</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>C:\Users\ddeering\Desktop\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>3</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -31,6 +47,18 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>9BB04AB65DFE673091577BC1C88FF618D2C71AB7</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>Budget_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -44,7 +72,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="validator\DateInputValidator.cs" />
+    <Compile Include="validator\Validator.cs" />
     <Compile Include="window\AbstractWindow\AbstractWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -53,6 +81,12 @@
     </Compile>
     <Compile Include="window\ConfirmDeleteWindow.Designer.cs">
       <DependentUpon>ConfirmDeleteWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="window\ErrorWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="window\ErrorWindow.Designer.cs">
+      <DependentUpon>ErrorWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="window\SaveAccountWindow.cs">
       <SubType>Form</SubType>
@@ -72,16 +106,19 @@
     <Compile Include="window\EditBillWindow.Designer.cs">
       <DependentUpon>EditBillWindow.cs</DependentUpon>
     </Compile>
-    <Compile Include="window\MainWindow.cs">
+    <Compile Include="window\Budget.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="window\MainWindow.Designer.cs">
-      <DependentUpon>MainWindow.cs</DependentUpon>
+    <Compile Include="window\Budget.Designer.cs">
+      <DependentUpon>Budget.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="window\ConfirmDeleteWindow.resx">
       <DependentUpon>ConfirmDeleteWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="window\ErrorWindow.resx">
+      <DependentUpon>ErrorWindow.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="window\SaveAccountWindow.resx">
       <DependentUpon>SaveAccountWindow.cs</DependentUpon>
@@ -92,8 +129,8 @@
     <EmbeddedResource Include="window\EditBillWindow.resx">
       <DependentUpon>EditBillWindow.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="window\MainWindow.resx">
-      <DependentUpon>MainWindow.cs</DependentUpon>
+    <EmbeddedResource Include="window\Budget.resx">
+      <DependentUpon>Budget.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -104,6 +141,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="Budget_TemporaryKey.pfx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -132,9 +170,19 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="cfg\hibernate.cfg.xml">
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
+    <Content Include="cfg\hibernate.cfg.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.5">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.5 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

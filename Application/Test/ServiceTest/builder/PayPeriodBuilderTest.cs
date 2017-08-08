@@ -76,7 +76,6 @@ namespace Dmi.ServiceTest.builder
         {
             IAccount account = new Account();
 
-            account = new Account();
             account.RecordId = 0;
             account.AccountBalance = 10000m;
             account.CompanyName = "Test Company 1";
@@ -127,7 +126,6 @@ namespace Dmi.ServiceTest.builder
             payDay.RecordId = 0;
             return payDay;
         }
-
 
         #endregion
 

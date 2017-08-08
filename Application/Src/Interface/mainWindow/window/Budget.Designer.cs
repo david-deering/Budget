@@ -1,7 +1,8 @@
 ﻿using System.Windows.Forms;
-namespace MainWindow
+
+namespace mainWindow.window
 {
-    partial class MainWindow
+    partial class Budget
     {
         /// <summary>
         /// Required designer variable.
@@ -359,6 +360,7 @@ namespace MainWindow
             // 
             // tabPageConfig
             // 
+            this.tabPageConfig.BackColor = System.Drawing.Color.Plum;
             this.tabPageConfig.Controls.Add(this.listViewConfigIncome);
             this.tabPageConfig.Controls.Add(this.buttonDeleteIncome);
             this.tabPageConfig.Controls.Add(this.buttonEditIncome);
@@ -376,10 +378,10 @@ namespace MainWindow
             this.tabPageConfig.Size = new System.Drawing.Size(1312, 595);
             this.tabPageConfig.TabIndex = 1;
             this.tabPageConfig.Text = "Configuration";
-            this.tabPageConfig.UseVisualStyleBackColor = true;
             // 
             // listViewConfigIncome
             // 
+            this.listViewConfigIncome.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.listViewConfigIncome.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2});
@@ -403,47 +405,56 @@ namespace MainWindow
             // 
             // buttonDeleteIncome
             // 
+            this.buttonDeleteIncome.BackColor = System.Drawing.Color.LemonChiffon;
+            this.buttonDeleteIncome.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonDeleteIncome.Location = new System.Drawing.Point(637, 140);
             this.buttonDeleteIncome.Name = "buttonDeleteIncome";
             this.buttonDeleteIncome.Size = new System.Drawing.Size(109, 23);
             this.buttonDeleteIncome.TabIndex = 21;
             this.buttonDeleteIncome.Text = "Delete";
-            this.buttonDeleteIncome.UseVisualStyleBackColor = true;
+            this.buttonDeleteIncome.UseVisualStyleBackColor = false;
             this.buttonDeleteIncome.Click += new System.EventHandler(this.buttonDeleteIncome_Click);
             // 
             // buttonEditIncome
             // 
+            this.buttonEditIncome.BackColor = System.Drawing.Color.LemonChiffon;
+            this.buttonEditIncome.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonEditIncome.Location = new System.Drawing.Point(637, 98);
             this.buttonEditIncome.Name = "buttonEditIncome";
             this.buttonEditIncome.Size = new System.Drawing.Size(109, 23);
             this.buttonEditIncome.TabIndex = 20;
             this.buttonEditIncome.Text = "Edit";
-            this.buttonEditIncome.UseVisualStyleBackColor = true;
+            this.buttonEditIncome.UseVisualStyleBackColor = false;
             this.buttonEditIncome.Click += new System.EventHandler(this.buttonEditIncome_Click);
             // 
             // buttonAddIncome
             // 
+            this.buttonAddIncome.BackColor = System.Drawing.Color.LemonChiffon;
+            this.buttonAddIncome.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAddIncome.Location = new System.Drawing.Point(637, 56);
             this.buttonAddIncome.Name = "buttonAddIncome";
             this.buttonAddIncome.Size = new System.Drawing.Size(109, 23);
             this.buttonAddIncome.TabIndex = 19;
             this.buttonAddIncome.Text = "Add";
-            this.buttonAddIncome.UseVisualStyleBackColor = true;
+            this.buttonAddIncome.UseVisualStyleBackColor = false;
             this.buttonAddIncome.Click += new System.EventHandler(this.buttonAddIncome_Click_1);
             // 
             // buttonSetActive
             // 
+            this.buttonSetActive.BackColor = System.Drawing.Color.LemonChiffon;
+            this.buttonSetActive.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonSetActive.Location = new System.Drawing.Point(6, 182);
             this.buttonSetActive.Name = "buttonSetActive";
             this.buttonSetActive.Size = new System.Drawing.Size(109, 23);
             this.buttonSetActive.TabIndex = 14;
             this.buttonSetActive.Text = "Set Status";
-            this.buttonSetActive.UseVisualStyleBackColor = true;
+            this.buttonSetActive.UseVisualStyleBackColor = false;
             this.buttonSetActive.Click += new System.EventHandler(this.buttonSetActive_Click);
             // 
             // labelIncomes
             // 
             this.labelIncomes.AutoSize = true;
+            this.labelIncomes.BackColor = System.Drawing.Color.LemonChiffon;
             this.labelIncomes.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.labelIncomes.Location = new System.Drawing.Point(886, 28);
             this.labelIncomes.Name = "labelIncomes";
@@ -454,6 +465,7 @@ namespace MainWindow
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.BackColor = System.Drawing.Color.LemonChiffon;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(268, 28);
             this.label2.Name = "label2";
@@ -463,32 +475,38 @@ namespace MainWindow
             // 
             // buttonDeleteAccount
             // 
+            this.buttonDeleteAccount.BackColor = System.Drawing.Color.LemonChiffon;
+            this.buttonDeleteAccount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonDeleteAccount.Location = new System.Drawing.Point(6, 140);
             this.buttonDeleteAccount.Name = "buttonDeleteAccount";
             this.buttonDeleteAccount.Size = new System.Drawing.Size(109, 23);
             this.buttonDeleteAccount.TabIndex = 8;
             this.buttonDeleteAccount.Text = "Delete";
-            this.buttonDeleteAccount.UseVisualStyleBackColor = true;
+            this.buttonDeleteAccount.UseVisualStyleBackColor = false;
             this.buttonDeleteAccount.Click += new System.EventHandler(this.buttonDeleteAccount_Click);
             // 
             // buttonEditAccount
             // 
+            this.buttonEditAccount.BackColor = System.Drawing.Color.LemonChiffon;
+            this.buttonEditAccount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonEditAccount.Location = new System.Drawing.Point(6, 98);
             this.buttonEditAccount.Name = "buttonEditAccount";
             this.buttonEditAccount.Size = new System.Drawing.Size(109, 23);
             this.buttonEditAccount.TabIndex = 7;
             this.buttonEditAccount.Text = "Edit";
-            this.buttonEditAccount.UseVisualStyleBackColor = true;
+            this.buttonEditAccount.UseVisualStyleBackColor = false;
             this.buttonEditAccount.Click += new System.EventHandler(this.buttonEditAccount_Click);
             // 
             // buttonAddAccount
             // 
+            this.buttonAddAccount.BackColor = System.Drawing.Color.LemonChiffon;
+            this.buttonAddAccount.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonAddAccount.Location = new System.Drawing.Point(6, 56);
             this.buttonAddAccount.Name = "buttonAddAccount";
             this.buttonAddAccount.Size = new System.Drawing.Size(109, 23);
             this.buttonAddAccount.TabIndex = 6;
             this.buttonAddAccount.Text = "Add";
-            this.buttonAddAccount.UseVisualStyleBackColor = true;
+            this.buttonAddAccount.UseVisualStyleBackColor = false;
             this.buttonAddAccount.Click += new System.EventHandler(this.buttonAddAccount_Click);
             // 
             // listViewAccounts
@@ -500,7 +518,7 @@ namespace MainWindow
             this.listViewAccounts.FullRowSelect = true;
             this.listViewAccounts.Location = new System.Drawing.Point(121, 56);
             this.listViewAccounts.Name = "listViewAccounts";
-            this.listViewAccounts.Size = new System.Drawing.Size(377, 527);
+            this.listViewAccounts.Size = new System.Drawing.Size(380, 527);
             this.listViewAccounts.TabIndex = 4;
             this.listViewAccounts.UseCompatibleStateImageBehavior = false;
             this.listViewAccounts.View = System.Windows.Forms.View.Details;
@@ -599,14 +617,14 @@ namespace MainWindow
             this.confirmDeleteToolStripMenuItem1.Text = "Confirm Delete";
             this.confirmDeleteToolStripMenuItem1.Click += new System.EventHandler(this.confirmDeleteToolStripMenuItem1_Click);
             // 
-            // MainWindow
+            // Budget
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(1350, 642);
             this.Controls.Add(this.panel1);
-            this.Name = "MainWindow";
+            this.Name = "Budget";
             this.Text = "Budget";
             this.panel1.ResumeLayout(false);
             this.tabMain.ResumeLayout(false);

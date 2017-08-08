@@ -69,6 +69,7 @@
             this.textBoxPayment.Name = "textBoxPayment";
             this.textBoxPayment.Size = new System.Drawing.Size(145, 20);
             this.textBoxPayment.TabIndex = 1;
+            this.textBoxPayment.TextChanged += new System.EventHandler(this.textBoxPayment_TextChanged);
             // 
             // textBoxDateDue
             // 

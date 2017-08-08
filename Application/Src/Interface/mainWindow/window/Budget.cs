@@ -1,21 +1,20 @@
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
+using System.Windows.Forms;
 using Budget;
 using Budget.window;
 using Domain;
 using Presentation;
-using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Globalization;
-using System.Linq;
-using System.Windows.Forms;
 
-namespace MainWindow
+namespace mainWindow.window
 {
-    public partial class MainWindow : AbstractWindow
+    public partial class Budget : AbstractWindow
     {
         #region Constructors
 
-        public MainWindow()
+        public Budget()
         {
             InitializeComponent();
             Presenter = new MainWindowPresenter();
@@ -59,30 +58,35 @@ namespace MainWindow
         private void addAnAccountToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SaveAccountWindow window = new SaveAccountWindow();
+            window.FormClosing += Action_FormClosing;
             ShowWindow(window);
         }
 
         private void addIncomeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             IncomeWindow window = new IncomeWindow();
+            window.FormClosing += Action_FormClosing;
             ShowWindow(window);
         }
 
         private void buttonAddAccount_Click(object sender, EventArgs e)
         {
             SaveAccountWindow window = new SaveAccountWindow();
+            window.FormClosing += Action_FormClosing;
             ShowWindow(window);
         }
 
         private void buttonAddIncome_Click(object sender, EventArgs e)
         {
             IncomeWindow window = new IncomeWindow();
+            window.FormClosing += Action_FormClosing;
             ShowWindow(window);
         }
 
         private void buttonAddIncome_Click_1(object sender, EventArgs e)
         {
             IncomeWindow window = new IncomeWindow();
+            window.FormClosing += Action_FormClosing;
             ShowWindow(window);
         }
 
@@ -101,6 +105,7 @@ namespace MainWindow
             }
 
             ConfirmDeleteWindow window = new ConfirmDeleteWindow(model);
+            window.FormClosing += Action_FormClosing;
             ShowWindow(window);
 
         }
@@ -114,6 +119,7 @@ namespace MainWindow
             }
 
             ConfirmDeleteWindow window = new ConfirmDeleteWindow(model);
+            window.FormClosing += Action_FormClosing;
             ShowWindow(window);
         }
 
@@ -126,6 +132,7 @@ namespace MainWindow
             }
 
             SaveAccountWindow window = new SaveAccountWindow(model);
+            window.FormClosing += Action_FormClosing;
             ShowWindow(window);
         }
 
@@ -138,6 +145,7 @@ namespace MainWindow
             }
 
             IncomeWindow window = new IncomeWindow(model);
+            window.FormClosing += Action_FormClosing;
             ShowWindow(window);
         }
 
@@ -183,6 +191,7 @@ namespace MainWindow
             listViewBudget.Items.Clear();
             labelTotalIncome.Text = "";
             ShowIncome();
+
         }
 
         private void listView1_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -191,6 +200,7 @@ namespace MainWindow
             ListViewItem item = info.Item;
 
             EditBillWindow window = new EditBillWindow(item.Tag as BillModel);
+            window.FormClosing += Action_FormClosing;
             ShowWindow(window);
         }
 
@@ -217,6 +227,7 @@ namespace MainWindow
             ListViewHitTestInfo info = listViewAccounts.HitTest(e.X, e.Y);
             ListViewItem item = info.Item;
             SaveAccountWindow window = new SaveAccountWindow(item.Tag as AccountModel);
+            window.FormClosing += Action_FormClosing;
             ShowWindow(window);
         }
 
@@ -262,6 +273,7 @@ namespace MainWindow
             ListViewHitTestInfo info = listViewIncome.HitTest(e.X, e.Y);
             ListViewItem item = info.Item;
             IncomeWindow window = new IncomeWindow(item.Tag as PayDayModel);
+            window.FormClosing += Action_FormClosing;
             ShowWindow(window);
         }
 
@@ -351,7 +363,8 @@ namespace MainWindow
 
         private void CreateBudgetRow(DateDecimal budget)
         {
-            string combinedRowContent = string.Format("{0}, {1}", budget.Amount, budget.Date);
+            string amount = decimal.Round(budget.Amount, 2, MidpointRounding.AwayFromZero).ToString(CultureInfo.InvariantCulture);
+            string combinedRowContent = string.Format("{0}, {1}", amount, budget.Date);
             string[] splitRowContent = combinedRowContent.Split(',');
             ListViewItem item = new ListViewItem(splitRowContent);
             listViewBudget.Items.Add(item);
@@ -472,18 +485,9 @@ namespace MainWindow
             }
 
             models.OrderBy(pdm => pdm.Date).Where(pdm => pdm.Date.Month == DisplayedDate.Month && pdm.Date.Year == DisplayedDate.Year).ToList().ForEach(CreateIncomeRow);
-            labelTotalIncome.Text = TotalIncome.ToString(CultureInfo.InvariantCulture);
+            labelTotalIncome.Text = decimal.Round(TotalIncome, 2, MidpointRounding.AwayFromZero).ToString(CultureInfo.InvariantCulture);
         }
 
-        private void ShowWindow(Form window)
-        {
-            window.FormClosing += Action_FormClosing;
-            window.WindowState = FormWindowState.Normal;
-            window.StartPosition = FormStartPosition.Manual;
-            window.BringToFront();
-            window.Location = new Point(700, 300);
-            window.Show();
-        }
 
         private void SortAccountsByAccountBalance()
         {

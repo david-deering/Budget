@@ -1,4 +1,5 @@
 ﻿using Budget.window;
+using mainWindow.window;
 using Presentation;
 using System;
 using System.Globalization;
@@ -32,7 +33,17 @@ namespace Budget
             Model.DateOwed = DateTime.Parse(textBoxDateDue.Text);
             Model.MonthlyPayment = decimal.Parse(textBoxPayment.Text);
             Model.Paid = checkBoxPaid.Checked;
-            Presenter.EditBill(Model);
+
+            try
+            {
+                Presenter.EditBill(Model);
+            }
+            catch (Exception ex)
+            {
+                ErrorWindow window = new ErrorWindow(ex.Message);
+                ShowWindow(window);
+            }
+
             Close();
         }
 
@@ -46,11 +57,9 @@ namespace Budget
             ValidateDate(textBoxDateDue, buttonSave);
         }
 
-        #region Helper Methods
-
-
-
-        #endregion
-
+        private void textBoxPayment_TextChanged(object sender, EventArgs e)
+        {
+            ValidateDecimal(textBoxPayment, buttonSave);
+        }
     }
 }

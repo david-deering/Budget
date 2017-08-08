@@ -1,6 +1,7 @@
 ﻿using Budget.window;
 using Presentation;
 using System;
+using System.Drawing;
 using System.Globalization;
 
 namespace Budget
@@ -15,6 +16,13 @@ namespace Budget
             tableLayoutPanelAddAccount.Visible = true;
             buttonDelete.Hide();
             EditMode = false;
+            textBoxBalance.BackColor = Color.Tomato;
+            textBoxInterestRate.BackColor = Color.Tomato;
+            textBoxAmountDue.BackColor = Color.Tomato;
+            textBoxFirstDueDate.BackColor = Color.Tomato;
+            textBoxName.BackColor = Color.Tomato;
+            buttonSave.Enabled = false;
+
             Presenter = new AccountPresenter();
         }
 
@@ -84,6 +92,27 @@ namespace Budget
         {
             ValidateDate(textBoxFirstDueDate, buttonSave);
         }
+
+        private void textBoxBalance_TextChanged(object sender, EventArgs e)
+        {
+            ValidateDecimal(textBoxBalance, buttonSave);
+        }
+
+        private void textBoxInterestRate_TextChanged(object sender, EventArgs e)
+        {
+            ValidateDecimal(textBoxInterestRate, buttonSave);
+        }
+
+        private void textBoxAmountDue_TextChanged(object sender, EventArgs e)
+        {
+            ValidateDecimal(textBoxAmountDue, buttonSave);
+        }
+
+        private void textBoxName_TextChanged(object sender, EventArgs e)
+        {
+            ValidateText(textBoxName, buttonSave);
+        }
+
         #endregion
 
 
