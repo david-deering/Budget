@@ -108,7 +108,12 @@ namespace Service
             }
 
             string currentDirectory = System.Environment.CurrentDirectory;
-            return Path.Combine(currentDirectory, "../../cfg", filePath);
+            //TODO: I hate this
+            //Debug
+            //return Path.Combine(currentDirectory, "../../cfg", filePath);
+
+            //Release
+            return Path.Combine(currentDirectory, "cfg", filePath);
         }
 
         #endregion
